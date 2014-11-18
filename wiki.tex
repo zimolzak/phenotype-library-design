@@ -24,16 +24,18 @@ expert knows that we want to track the effect of drug $x$ on (for
 example) serum sodium. SME attempts to operationalize the concept of
 serum sodium, suggesting a list of terms to be searched for in a field
 (e.g.\ \texttt{LabChemTestName}) of CDW. \emph{Second,} data pull team
-returns a list of lab tests matching these search
-terms.\footnote{probably generating SQL code in the process.}
-\emph{Third,} SME reviews list of tests and decides (adjudicates)
-which items truly match the concept. SME returns either a refined
-general rule to specify which items match the concept, or an
-enumerated list of which items match the concept. \emph{Fourth,} data
-pull team creates query that represents this
-adjudication.\footnote{probably generating refined SQL code.} The
-clinical SME may give formal approval or ``sign off'' on the data pull
-at step 3, or on the results of step 4.
+returns a list of lab tests matching these search terms.\footnote{The
+  list sent to the SME is often an Excel file. Data extractor probably
+  generates SQL code in the process.} \emph{Third,} SME reviews list
+of tests and decides (adjudicates) which items truly match the
+concept. SME returns either a refined general rule to specify which
+items match the concept, or an enumerated list of which items match
+the concept.\footnote{So far I return this adjudication to Beth in the
+  form of an edited Excel file.} \emph{Fourth,} data pull team creates
+query that represents this adjudication.\footnote{probably generating
+  refined SQL code.} The clinical SME may give formal approval or
+``sign off'' on the data pull at step 3, or possibly on the results of
+step 4.
 
 Data pull and NLP teams intend to use the wiki to capture this
 workflow so that these deliverables are \emph{available for reuse} in
@@ -46,61 +48,21 @@ be documented.
 
 \section{Questions for the group}
 
-What should we call the deliverable that the data pull expert and the
-SME create in collaboration?\footnote{Suggestions: data model, concept
-model, algorithm, adjudication, library}
+\begin{itemize}
 
-Is the wiki the right place for SQL code?
+\item What should we call the deliverable that the data pull expert
+  and the SME create in collaboration?\footnote{Suggestions: data
+    model, concept model, algorithm, adjudication, library}
 
-Training on the wiki?
+\item Is the wiki the right place for SQL code?
 
-How does wiki fit in with data pull request tracker?
+\item Training on the wiki?
+
+\item How does wiki fit in with data pull request tracker?
+
+\end{itemize}
 
 % left off here
-
-\section{Themes}
-
-\begin{itemize}
-\item Data Access and Secure Server Development
-\item Model/algorithm development
-
-\begin{itemize}
-\item Communication
-\item Documenting the process
-\item Storing results
-\end{itemize}
-
-\item Model/algorithm management
-
-\begin{itemize}
-\item Storing metadata (DMR)
-\item Storing models themselves
-\item Model test/validation process (who signs off, on what?)
-\item Storing model test and validation results
-\end{itemize}
-\end{itemize}
-
-Among others, this encompasses the wiki project as well as the data
-pull request tracker. These projects originated as solutions to
-existing problems, and both are hopefully approaching full roll-out
-phase. As such, it may be important to have defined training
-objectives and roll-out plans for each tool, so that they become
-integrated into workflows, rather than remain as offshoot projects.
- 
-Next Wednesday's meeting will be abbreviated due to the CSPCC monthly
-speaker event occurring at noon (topic is fraud in medical research,
-should be very interesting), so we will only have time to talk at
-length about one topic.
- 
-Andy and Ned, if you could have a recap of the changes that have
-happened with the wiki project for next week, as well as your plans
-for next steps with the project, I think that would be of general
-interest to the members of this meeting.
- 
-There has also been some feedback regarding the name of this meeting,
-since it does not directly pertain to ``data.'' One name proposal is
-``Model/Algorithm environments meeting'' but I don't know if that is
-too vague. Thoughts?
 
 \section{About MediaWiki}
 
