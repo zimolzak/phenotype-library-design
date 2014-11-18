@@ -21,7 +21,7 @@ of 74 GB of space is free on \texttt{vhabosapp8}.
 The Precision Oncology Project and the Point of Care Trial project
 rely on a workflow that goes as follows. \emph{First,} subject matter
 expert knows that we want to track the effect of drug $x$ on (for
-example) serum sodium. SME attempts to operationalizes the concept of
+example) serum sodium. SME attempts to operationalize the concept of
 serum sodium, suggesting a list of terms to be searched for in a field
 (e.g.\ \texttt{LabChemTestName}) of CDW. \emph{Second,} data pull team
 returns a list of lab tests matching these search
@@ -31,7 +31,9 @@ which items truly match the concept. SME returns either a refined
 general rule to specify which items match the concept, or an
 enumerated list of which items match the concept. \emph{Fourth,} data
 pull team creates query that represents this
-adjudication.\footnote{probably generating refined SQL code.}
+adjudication.\footnote{probably generating refined SQL code.} The
+clinical SME may give formal approval or ``sign off'' on the data pull
+at step 3, or on the results of step 4.
 
 Data pull and NLP teams intend to use the wiki to capture this
 workflow so that these deliverables are \emph{available for reuse} in
@@ -39,7 +41,8 @@ a library, for the purposes of other projects; \emph{available for
   discussion} with their ``provenance'' (responsible SME and data
 extractor) clearly noted; and \emph{available for renewal,} with their
 date of creation clearly noted, because CDW elements may change over
-time.
+time. The rationale for the SME including/excluding certain tests can
+be documented. 
 
 \section{Questions for the group}
 
@@ -48,6 +51,12 @@ SME create in collaboration?\footnote{Suggestions: data model, concept
 model, algorithm, adjudication, library}
 
 Is the wiki the right place for SQL code?
+
+Training on the wiki?
+
+How does wiki fit in with data pull request tracker?
+
+% left off here
 
 \section{Themes}
 
@@ -132,3 +141,6 @@ Where does the actual SQL go? Here is what the current Data Pull
 template looks like.
 
 \end{document}
+
+% LocalWords:  MAVERIC vhabosapp Jira workflow SME operationalize CDW DMR CSPCC
+% LocalWords:  LabChemTestName workflows MediaWiki MySQL PHP wikitext AST
