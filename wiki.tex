@@ -15,101 +15,130 @@ December 2010. It was evidently used a fair amount through October
   documenting GenISIS \& HPC server configurations, and documenting
   server setup procedures. Top contributors were Phsieh,
   Lalitha.viswanath, and Mmcduffie.}, but with virtually no edits in
-2012--2013. Starting May 2014, usage has picked up
-again.\footnote{Used for DCP, POP, data pull, ``phenotype models,''
-  and NLP. Top contributors Rpourali, Nilla, Beth, Andy Z.} The
-\texttt{vhabosapp8} server that hosts the wiki also hosts Subversion
-repositories and the Jira issue and project tracker.
+2012--2013. Starting May 2014, usage has picked up again.\footnote{Now
+  used for DCP, POP, data pull, ``phenotype models,'' and NLP. Top
+  contributors: Rpourali, Nilla, Beth, Andy Z. Now there are 54
+  content pages, and 11 users who have been active in the last 30
+  days.}
 
 \section{Problem/niche}
 
 The Precision Oncology Project and the Point of Care Trial project
-rely on a workflow that goes as follows. \emph{First,} subject matter
-expert knows that we want to track the effect of drug $x$ on (for
-example) serum sodium. SME attempts to operationalize the concept of
-serum sodium, suggesting a list of terms to be searched for in a field
-(e.g.\ \texttt{LabChemTestName}) of CDW. \emph{Second,} data pull team
-returns a list of lab tests matching these search terms.\footnote{The
-  list sent to the SME is often an Excel file. Data extractor probably
-  generates SQL code in the process.} \emph{Third,} SME reviews list
-of tests and decides (adjudicates) which items truly match the
-concept. SME returns either a refined general rule to specify which
-items match the concept, or an enumerated list of which items match
-the concept.\footnote{So far I return this adjudication to Beth in the
-  form of an edited Excel file.} \emph{Fourth,} data pull team creates
-query that represents this adjudication.\footnote{probably generating
-  refined SQL code.} The clinical SME may give formal approval or
-``sign off'' on the data pull at step 3, or possibly on the results of
-step 4.
+rely in part on a workflow that goes roughly as follows. \emph{First,}
+the subject matter expert knows that we want to track the effect of
+drug $x$ on (for example) serum sodium. The SME attempts to
+operationalize the concept of serum sodium, suggesting a list of terms
+to be searched for in a field (e.g.\ \texttt{LabChemTestName}) of CDW.
+\emph{Second,} the data pull team returns a list of lab tests matching
+these search terms.\footnote{The list sent to the SME is often an
+  Excel file. Data extractor probably generates SQL code in the
+  process.} \emph{Third,} the SME reviews the list of tests and
+decides (adjudicates) which items truly match the concept. The SME
+returns either a refined general rule to specify which items match the
+concept, or an enumerated list of which items match the
+concept.\footnote{So far I return this adjudication to Beth in the
+  form of an edited Excel file.} \emph{Fourth,} the data pull team
+creates a query that represents this adjudication.\footnote{probably
+  generating refined SQL code.} The clinical SME may give formal
+approval or ``sign off'' on the data pull at step 3, or possibly on
+the results of step 4.
 
-Data pull and NLP teams intend to use the wiki to capture this
+The data pull and NLP teams intend to use the wiki to capture this
 workflow so that these deliverables are \emph{available for reuse} in
 a library, for the purposes of other projects; \emph{available for
   discussion} with their ``provenance'' (responsible SME and data
 extractor) clearly noted; and \emph{available for renewal,} with their
 date of creation clearly noted, because CDW elements may change over
 time. The rationale for the SME including/excluding certain tests can
-be documented.\footnote{The basic idea is that the methods of science
-  should be documented well enough to be reproducible---in other
-  words, ``show your work.'' For our type of science, \emph{code is
-    method.} See also http://sciencecodemanifesto.org}
+also be documented.\footnote{The basic idea is that the methods of
+  science should be documented well enough to be reproducible---in
+  other words, ``show your work.'' For our type of science, \emph{code
+    is method.} See also http://sciencecodemanifesto.org}
 
-\section{What has changed recently}
+\section{Recent wiki changes}
 
-\paragraph{October 23--28} I created several standard templates that
+\paragraph{October 23--29} I created several standard templates that
 can be used in multiple places, to avoid duplicating the same wikitext
-code. These are mainly for Data Pull and NLP subsections of the wiki. 
+code. These are mainly for Data Pull and NLP subsections of the wiki.
+Also organized the structure of some wiki pages.
 
-\paragraph{October 29} Organize the Data Pull wiki page structure. 
+\paragraph{October 30} First actual use of the wiki to store
+adjudications---specifically to store ``POP Additional Documents''
+(cancer-related radiology notes) and sodium.
 
-\paragraph{October 30} Start using for ``POP Additional Documents''
-and sodium.
+\paragraph{November 5} Shadow wiki created for testing, using 
+MediaWiki version 1.23.6 instead of 1.16.0. This will allow us to use
+new MediaWiki extensions to do two things: write wikicode templates
+that use conditional logic,\footnote{An example of invoking such a
+  template, used on the NLP dashboard page, looks like this:
+  \texttt{\{\{Phase|Requirements\}\}}. This expands to a nice looking
+  table with one cell highlighted. Elsewhere this template is invoked
+  as \texttt{\{\{Phase|Development\}\}}, which expands to the same
+  table with a different cell highlighted. This avoids a \emph{lot} of
+  copy-pasting of wikicode tables.} and do syntax highlighting of
+source code snippets. Ned and I are also given shell accounts on
+\texttt{vhabosapp8} thanks to Paul.
 
-\paragraph{November 5} Shadow wiki created.
-
-\paragraph{November 6} Magnesium, ALT.
+\paragraph{November 6--10} Magnesium and ALT lab adjudications uploaded.
 
 \paragraph{November 12} Shadow wiki becomes real wiki.
 
-\paragraph{November 12--14} Magnesium, ALT, POP surgical procedures,
-ALT, AST.
-
-\section{Flaws in wiki}
-
-Where does the actual SQL go? Here is what the current Data Pull
-template looks like.
+\paragraph{November 12--14} POP surgical procedures and AST
+adjudications uploaded.
 
 \section{Suggestions for you all in future}
 
-Don't upload enormous things. Use talk pages. 
+Look at the wiki.\footnote{Reminder! http://vhabosapp8/wiki} Create a
+user account. Do edit things (be bold). Ask me if you need
+help.\footnote{Andrew.Zimolzak@va.gov} Don't upload enormous things.
+Use talk pages.
 
 \section{Questions for the group}
 
 \begin{itemize}
 
 \item What should we call the deliverable that the data pull expert
-  and the SME create in collaboration?\footnote{Suggestions: data
-    model, concept model, algorithm, adjudication, library, phenotype}
+  and the SME create in collaboration?\footnote{Thoughts: data
+    model, concept model, algorithm, adjudication, library, phenotype,
+    phenotype model.}
 
-\item Is the wiki the right place for SQL code?
+\item Is the wiki the right place for SQL code? Or should the wiki
+  merely have a pointer to a source control repository?
 
-\item Training on the wiki?
+\item What training on the wiki do you want?
 
 \item How does wiki fit in with data pull request tracker?
 
+\item Should SMEs deliver general rules or enumerations?
+
+\item What should be captured about each algorithm?\footnote{Currently
+  caputured on basic algorithm pages on wiki: algorithm version, SQL
+  statement, SME name, approval date. On the more detailed wiki form
+  we have the following fields: lab name, sample source (body site),
+  date created, data source, SQL search terms used, clinical
+  adjudication list (link to Excel file), adjudicator name, SQL data
+  extractor name, extracted data location, content of extracted data,
+  extraction verified by:, SQL extraction code.}
+
 \end{itemize}
 
-\section{About MediaWiki}
+\section{Further reading about MediaWiki and our server}
 
 ``A wiki is a Web application which allows people to add, modify, or
 delete content in collaboration with
 others.''\footnote{http://en.wikipedia.org/wiki/Wiki} MediaWiki is the
 software that makes Wikipedia run, but anyone can install it to their
-Web server to create their own wiki. The \texttt{vhabosapp8} server
-runs Red Hat Enterprise Linux, Apache, MySQL, and PHP. Currently 13
-out of 74 GB of space is free on \texttt{vhabosapp8}.
+Web server to create their own wiki. MediaWiki uses its own markup
+language called wikitext.
+
+The \texttt{vhabosapp8} server runs Red Hat Enterprise Linux, Apache,
+MySQL, and PHP. It also hosts Subversion repositories and the Jira
+issue and project tracker. Currently 13 out of 74 GB of space is free
+on \texttt{vhabosapp8}.
 
 \end{document}
 
 % LocalWords:  MAVERIC vhabosapp Jira workflow SME operationalize CDW DMR CSPCC
-% LocalWords:  LabChemTestName workflows MediaWiki MySQL PHP wikitext AST
+% LocalWords:  LabChemTestName workflows MediaWiki MySQL PHP wikitext AST HPC
+% LocalWords:  GenISIS Phsieh Lalitha viswanath Mmcduffie DCP Rpourali Nilla
+% LocalWords:  wikicode
