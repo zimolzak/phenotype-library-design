@@ -97,46 +97,42 @@ charge of uploading/managing it.''
 
 \subsection{Already built}
 
-\begin{quote}
----Database space within CDW to store lists of adjudicated elements.\\
-SharePoint space for phenomics core to store some documentation.\\
-Wiki system to store further documentation, allow for search, allow collaborative editing with easy versioning, and help SharePoint navigation.\\
-Very basic system to store source code (happens to be the wiki)
-\end{quote}
+Database space within CDW to store lists of adjudicated elements.
+SharePoint space for phenomics core to store some documentation. Wiki
+system to store further documentation, allow for search, allow
+collaborative editing with easy versioning, and help SharePoint
+navigation. Very basic system to store source code (happens to be the
+wiki)
 
-\noindent Very short term (1--2 months):
+\subsection{Very short term (1--2 months)}
 
-\begin{quote}
-Decide on wiki vs SharePoint vs combination vs other solution. Depends on fixing access to wiki or fixing search within SharePoint.\\
-Organize browsing function of the wiki (or other solution) to the specs of the phenomics core (Anne \& I discussed this in past).
-\end{quote}
+Decide on wiki vs SharePoint vs combination vs other solution. Depends
+on fixing access to wiki or fixing search within SharePoint. Organize
+browsing function of the wiki (or other solution) to the specs of the
+phenomics core (Anne \& I discussed this in past).
 
-Long term (1 year +):
-\begin{quote}
-Agree on and possibly train on a more robust source code control system (or failing that, design wiki to do the best we can).\\
-Agree on best practices for elements needed document a phenotype (who built this, when, using what process, for what chief purpose/study/intent, why did they make the choices they made, etc.)\\
-Document at least one phenotype using these practices, to serve as an exemplar for others.\\
-System to advertise what is in process of being built (not just completed tasks)
-\end{quote}
+\subsection{Long term (1 year +)}
 
-Even longer term:
+Agree on and possibly train on a more robust source code control
+system (or failing that, design wiki to do the best we can). Agree on
+best practices for elements needed document a phenotype (who built
+this, when, using what process, for what chief purpose/study/intent,
+why did they make the choices they made, etc.) Document at least one
+phenotype using these practices, to serve as an exemplar for others.
+System to advertise what is in process of being built (not just
+completed tasks)
 
-System that infers a SME's internal mental model (e.g. ``serum sodium is where LabChemTestName matches the following 3 text strings, where Topography matches the following 2 strings, or where LOINC is in the following set of 5 elements, except in the following 20 cases which have probably erroneous LOINCs or TestNames\ldots{}.''), from the SME answering ``keep/discard'' to CDW elements, with only slight further effort from the SME. (Nate has some approaches for this e.g. a system that learns classification trees that the SME can select/edit at a high level.)
+\subsection{Even longer term}
 
-
-
-\section{Recent wiki changes} 
-
-Started to use as of May 2014 on vhabosapp8. adjudications as of oct
-30, starting with radiology note titles, sodium, magnesium, AST, ALT,
-POP surgical procedures.
-
-Templates avoid a \emph{lot} of copy-pasting of wikicode.
-
-\section{Suggestions for you all in future}
-
-Look at the wiki. Make a user account. Edit things (be bold). Ask if
-you need help.
+System that infers a SME's internal mental model (e.g. ``serum sodium
+is where LabChemTestName matches the following 3 text strings, where
+Topography matches the following 2 strings, or where LOINC is in the
+following set of 5 elements, except in the following 20 cases which
+have probably erroneous LOINCs or TestNames\ldots{}.''), from the SME
+answering ``keep/discard'' to CDW elements, with only slight further
+effort from the SME. (Nate has some approaches for this e.g. a system
+that learns classification trees that the SME can select/edit at a
+high level.)
 
 \section{Questions for the group}
 
@@ -155,25 +151,33 @@ you need help.
 
 \item Do you want an e-mail every time a new algorithm is uploaded?
 
-\item What should be captured about each algorithm?\footnote{Currently
-  caputured on basic algorithm pages on wiki: algorithm version, SQL
-  statement, SME name, approval date. On the more detailed wiki form
-  we have the following fields: lab name, sample source (body site),
-  date created, data source, SQL search terms used, clinical
-  adjudication list (link to Excel file), adjudicator name, SQL data
-  extractor name, extracted data location, content of extracted data,
-  extraction verified by:, SQL extraction code.}
+\item What should be captured about each algorithm?%\footnote{Currently
+  %% caputured on basic algorithm pages on wiki: algorithm version, SQL
+  %% statement, SME name, approval date. On the more detailed wiki form
+  %% we have the following fields: lab name, sample source (body site),
+  %% date created, data source, SQL search terms used, clinical
+  %% adjudication list (link to Excel file), adjudicator name, SQL data
+  %% extractor name, extracted data location, content of extracted data,
+  %% extraction verified by:, SQL extraction code.}
 
 \end{itemize}
 
-\section{Further reading about MediaWiki and our server}
+\section{More about MediaWiki and our server}
 
 ``A wiki is a Web application which allows people to add, modify, or
 delete content in collaboration with
 others.''\footnote{http://en.wikipedia.org/wiki/Wiki} MediaWiki is the
 software that makes Wikipedia run, but anyone can install it to their
 Web server to create their own wiki. MediaWiki uses its own markup
-language called wikitext.
+language called wikitext. Templates avoid a \emph{lot} of copy-pasting
+of wikicode.
+
+Started to use as of May 2014 on vhabosapp8. adjudications as of oct
+30, starting with radiology note titles, sodium, magnesium, AST, ALT,
+POP surgical procedures. 
+
+%Look at the wiki. Make a user account. Edit things (be bold). Ask if
+%you need help.
 
 \end{document}
 
