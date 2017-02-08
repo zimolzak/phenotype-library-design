@@ -1,13 +1,11 @@
 \documentclass{tufte-handout}
-\title{Recap of MAVERIC Wiki Changes}
+\title{Design of a VA Phenotype Library}
 \author{Andy Zimolzak, MD, MMSc}
-\date{November 19, 2014}
+\date{February 8, 2017}
 
 \begin{document}
 
 \maketitle
-
-\section{What I imagine for phenotype library}
 
 Motivation: (a) VA data elements are not harmonized across stations,
 and that (b) phenotypes do this harmonization and also build low level
@@ -17,73 +15,45 @@ phenotypes into higher order phenotypes.\footnote{For example, 130
   is a subset of diabetes with any microvascular complication $\to$
   subset of diabetes with any complication at all, etc.}
 
-To start the process of defining a new phenotype, a subject matter
-expert (SME) works with the data pull team to search for candidate
-items that may contribute to the phenotype in question. The SME
-reviews the list that is retrieved, generating either a general rule
-to specify which items match the phenotype, or an enumerated list of
-which items match the phenotype. The data pull team then generates SQL
-code that represents the SME's rules, or a public database table that
-represents the enumerated list of data items, or even a statistical
-model of the likelihood of a patient having the given phenotype.
+\section{What I imagine for a phenotype library}
 
-Ideally, a robust phenotype library should exist, serving several
-functions. (1) The library would make the products of each SME/data
-review process \emph{available for viewing} by study coordinators or
-others, with ``provenance'' (responsible SME and data extractor)
-clearly noted, to allow study staff to trust a given phenotype. (2)
-The library would make phenotypes \emph{available for reuse}, for the
-purposes of other projects. (3) The library would allow easy searches
-across phenotypes, to allow new studies to discover what already
-exists. (4) The library would make phenotypes \emph{available for
-  renewal,} with their date of creation clearly noted, because data
-warehouse elements may change over time. (5) The library would
-document the rationale for decisions made by SME and data pull
-engineers.%\footnote{The basic idea is that the methods of science
+When a subject matter expert (SME), analyst, statistician, and/or data
+pull engineer create a phenotype/adjudication, the result can be SQL code that
+represents the SME's rules, or a public database table that represents
+the enumerated list of included/excluded data items, or even a
+statistical model of the likelihood of a patient having the given
+phenotype. Ideally, a robust phenotype library should exist, serving
+several functions. (1) The library would make the products of each
+SME/data review process \emph{available for viewing} by study
+coordinators or others, with ``provenance'' (responsible SME and data
+extractor) clearly noted, to allow study staff to trust a given
+phenotype. (2) The library would make phenotypes \emph{available for
+  reuse}, for the purposes of other projects. (3) The library would
+allow easy searches across phenotypes, to allow new studies to
+discover what already exists. (4) The library would make phenotypes
+\emph{available for renewal,} with their date of creation clearly
+noted, because data warehouse elements may change over time. (5) The
+library would document the rationale for decisions made by SME and
+data pull engineers.%\footnote{The basic idea is that the methods of
+science
 %  should be documented well enough to be reproducible---in other
 %  words, ``show your work.'' For our type of science, \emph{code is
 %    method.} See also http://sciencecodemanifesto.org}
 
-\section{Problem/niche}
-
-The Precision Oncology Project and the Point of Care Trial project
-rely in part on a workflow that goes roughly as follows. \emph{First,}
-the subject matter expert knows that we want to track the effect of
-drug $x$ on (for example) serum sodium. The SME attempts to
-operationalize the concept of serum sodium, suggesting a list of terms
-to be searched for in a field (e.g.\ \texttt{LabChemTestName}) of CDW.
-\emph{Second,} the data pull team returns a list of lab tests matching
-these search terms.\footnote{The list sent to the SME is often an
-  Excel file. Data extractor probably generates SQL code in the
-  process.} \emph{Third,} the SME reviews the list of tests and
-decides (adjudicates) which items truly match the concept. The SME
-returns either a refined general rule to specify which items match the
-concept, or an enumerated list of which items match the
-concept.\footnote{So far I return this adjudication to Beth in the
-  form of an edited Excel file.} \emph{Fourth,} the data pull team
-creates a query that represents this adjudication.\footnote{probably
-  generating refined SQL code.} The clinical SME may give formal
-approval or ``sign off'' on the data pull at step 3, or possibly on
-the results of step 4.
-
 \section{Operationalizing the library}
 
-I think \emph{some form} of wiki serves several of the functions well.
-Specifically a wiki can perform functions 1, 3, and 5 (view
-provenance, search for existing phenotypes, view documentation \&
-rationale). All of these functions involve basically human-readable
-items with English sentences. I like \emph{some form} of wiki, but I'm
-not sure whether the current wiki is the long-term form. It has a
-couple issues and is not perfect. MS Word documents in SharePoint is
-not the worst solution, except for the fact that I hate SharePoint's
-search feature.
+I think \emph{some form} of wiki serves several of the functions well,\footnote{Specifically: view provenance, search, and view documentation or
+rationale. All of these functions involve basically human-readable
+items with English sentences.} but I'm
+not sure whether the current wiki is the best long-term form of wiki. It has a
+couple issues and is not perfect. SharePoint would work OK, except for the fact SharePoint's
+search feature does not work at all for us.
 
-Functions 2 and 4 (reuse phenotype, renew or modify phenotype) are
-more oriented toward machine-readable items.\footnote{enumerated list of SIDs
+A wiki does \emph{not} serve some of the functions as well.\footnote{reuse phenotype, renew or modify phenotype. these are
+more oriented toward machine-readable items. For example: enumerated list of SIDs
 in a database table like MAVIN.DimLab, SQL code that describes a
 rules-based phenotype, SAS or R or whatever code that describes a
-statistical model of a phenotype, etc.} The industry standard way to
-manage this is absolutely not a wiki. In my imagined ideal world,
+statistical model of a phenotype.} In my imagined ideal world,
 people would use Git software to manage this code. There are other
 tools for source code management too.\footnote{e.g.\ IBM Rational Team Concert}
 The main drawback is the learning curve, so I don't know whether this
@@ -95,25 +65,19 @@ charge of uploading/managing it.''
 
 \section{Timeline and goals}
 
-\subsection{Already built}
-
-Database space within CDW to store lists of adjudicated elements.
+\paragraph{Already built:} Database space within CDW to store lists of adjudicated elements.
 SharePoint space for phenomics core to store some documentation. Wiki
 system to store further documentation, allow for search, allow
 collaborative editing with easy versioning, and help SharePoint
 navigation. Very basic system to store source code (happens to be the
 wiki).
 
-\subsection{Very short term (1--2 months)}
-
-Decide on wiki vs SharePoint vs combination vs other solution.\footnote{Depends
+\paragraph{Very short term (1--2 months):} Decide on wiki vs SharePoint vs combination vs other solution.\footnote{Depends
 on fixing access to wiki or fixing search within SharePoint.} Organize
 browsing function of the wiki (or other solution) to the specs of the
 phenomics core (Anne \& I discussed this in past).
 
-\subsection{Long term (1 year +)}
-
-Agree on and possibly train on a more robust source code control
+\paragraph{Long term (1 year +):} Agree on and possibly train on a more robust source code control
 system (or failing that, design wiki to do the best we can). Agree on
 best practices for elements needed document a phenotype.\footnote{who built
 this, when, using what process, for what chief purpose/study/intent,
@@ -122,9 +86,7 @@ phenotype using these practices, to serve as an exemplar for others.
 System to advertise what is in process of being built (not just
 completed tasks).
 
-\subsection{Even longer term}
-
-System that infers a SME's internal mental model,\footnote{e.g.\ ``serum sodium
+\paragraph{Even longer term:} System that infers a SME's internal mental model,\footnote{e.g.\ ``serum sodium
 is where LabChemTestName matches the following 3 text strings, where
 Topography matches the following 2 strings, or where LOINC is in the
 following set of 5 elements, except in the following 20 cases which
@@ -134,24 +96,11 @@ effort from the SME. (Nate has some approaches for this e.g.\ a system
 that learns classification trees that the SME can select/edit at a
 high level.)
 
-\section{Questions for the group}
+\paragraph{Questions for the group:} Is the wiki the right place for
+SQL code? What training on the wiki do you want? What should be
+captured about each algorithm?
 
-\begin{itemize}
-
-\item What should we call the deliverable that the data pull expert
-  and the SME create in collaboration?\footnote{Thoughts: data
-    model, concept model, algorithm, adjudication, library, phenotype,
-    phenotype model, study data dictionary.}
-
-\item Not much complete SQL is on the wiki currently. Is the wiki the
-  right place for SQL code? Or should the wiki merely have a pointer
-  to a source control repository?
-
-\item What training on the wiki do you want?
-
-\item Do you want an e-mail every time a new algorithm is uploaded?
-
-\item What should be captured about each algorithm?%\footnote{Currently
+  %\footnote{Currently
   %% caputured on basic algorithm pages on wiki: algorithm version, SQL
   %% statement, SME name, approval date. On the more detailed wiki form
   %% we have the following fields: lab name, sample source (body site),
@@ -159,8 +108,6 @@ high level.)
   %% adjudication list (link to Excel file), adjudicator name, SQL data
   %% extractor name, extracted data location, content of extracted data,
   %% extraction verified by:, SQL extraction code.}
-
-\end{itemize}
 
 \section{More about MediaWiki and our server}
 
@@ -170,11 +117,7 @@ others.''\footnote{http://en.wikipedia.org/wiki/Wiki} MediaWiki is the
 software that makes Wikipedia run, but anyone can install it to their
 Web server to create their own wiki. MediaWiki uses its own markup
 language called wikitext. Templates avoid a \emph{lot} of copy-pasting
-of wikicode.
-
-Started to use as of May 2014 on vhabosapp8. adjudications as of oct
-30, starting with radiology note titles, sodium, magnesium, AST, ALT,
-POP surgical procedures. 
+of wikicode. First use of our wiki for lab adjudication was May 2014.
 
 %Look at the wiki. Make a user account. Edit things (be bold). Ask if
 %you need help.
