@@ -7,13 +7,14 @@
 
 \maketitle
 
-Motivation: (a) VA data elements are not harmonized across stations,
-and that (b) phenotypes do this harmonization and also build low level
-phenotypes into higher order phenotypes.\footnote{For example, 130
-  stations ICD codes + labs + ??? $\to$ harmonized ICD + labs + ???
-  $\to$ diabetes + neuropathy $\to$ diabetic nephropathy $\to$ which
-  is a subset of diabetes with any microvascular complication $\to$
-  subset of diabetes with any complication at all, etc.}
+Motivation: VA data elements are not harmonized across stations.
+\emph{Phenotype} is the term we use for a set of harmonized data
+elements, or a higher order set built from many harmonized data
+elements.\footnote{For example, 130 stations' ICD codes + labs $\to$
+  harmonized ICD + labs $\to$ diabetes + neuropathy $\to$ diabetic
+  nephropathy $\to$ which is a subset of diabetes with any
+  microvascular complication $\to$ subset of diabetes with any
+  complication at all, etc.}
 
 \section{What I imagine for a phenotype library}
 
@@ -23,95 +24,100 @@ code that represents the SME's rules, or a public database table that
 represents the enumerated list of included/excluded data items, or
 even a statistical model of the likelihood of a patient having the
 given phenotype. Ideally, a robust phenotype library should exist,
-serving several functions. (1) The library would make the products of
-each SME/data review process \emph{available for viewing} by study
-coordinators or others, with ``provenance'' (responsible SME and data
-extractor) clearly noted, to allow study staff to trust a given
-phenotype. Make it easy to browse an overview of all documents
-without having to drill down into 99 different subfolders. (2) The library would make phenotypes \emph{available for
-  reuse}, for the purposes of other projects. (3) The library would
-allow easy searches across phenotypes, to allow new studies to
-discover what already exists. Very important
-to search within document content. (4) The library would make phenotypes
+serving several functions.
+
+(1) The library would make the products of each SME/data review
+process \emph{available for viewing} by study coordinators or others,
+with ``provenance'' (responsible SME and data extractor) clearly
+noted, to allow study staff to trust a given phenotype. Make it easy
+to browse an overview of all documents without having to drill down
+into 99 different subfolders. (2) The library would make phenotypes
+\emph{available for reuse}, for the purposes of other projects. (3)
+The library would allow easy searches across phenotypes, to allow new
+studies to discover what already exists. Very important to search
+within document content. (4) The library would make phenotypes
 \emph{available for renewal,} with their date of creation clearly
 noted, because data warehouse elements may change over time. (5) The
 library would document the rationale for decisions made by SME and
-data pull engineers. Allow collaborative editing of a group of documents. Audit/track all edits. Possibly
-link among documents.  
-(6) Should be available across VA nationally.
+data pull engineers. Allow collaborative editing of a group of
+documents. Audit/track all edits. Possibly link among documents. (6)
+Should be available across VA nationally.
 
 \section{Operationalizing the library}
 
-I think \emph{some form} of wiki serves several of the functions
-well,\footnote{Specifically: view provenance, search, and view
-  documentation or rationale. All of these functions involve basically
-  human-readable items with English sentences.} but I'm not sure
-whether the current wiki is the best long-term form of wiki. It has a
-couple issues and is not perfect. SharePoint would work OK, except for
-the fact SharePoint's search feature does not work at all for us.
+I think a wiki serves \emph{some} of these requirements
+well, especially search, and viewing provenance, documentation, and
+rationale.\footnote{A wiki is simply a Web application which allows
+  people to add, modify, or delete content in collaboration with
+  others. Requirements 1, 3, and 5 all involve basically
+  human-readable items with English sentences.} But I'm not sure
+whether the current wiki is the best long-term solution. SharePoint
+would work OK, except for the fact that its search feature does not
+work at all.
 
 A wiki does \emph{not} serve some of the functions as
-well.\footnote{reuse phenotype, renew or modify phenotype. these are
-  more oriented toward machine-readable items. For example: enumerated
-  list of SIDs in a database table like MAVIN.DimLab, SQL code that
-  describes a rules-based phenotype, SAS or R or whatever code that
-  describes a statistical model of a phenotype.} In my imagined ideal
-world, people would use Git software to manage this code. There are
-other tools for source code management too.\footnote{e.g.\ IBM
-  Rational Team Concert} The main drawback is the learning curve, so I
-don't know whether this is actually going to happen. SQL/SAS code on
-the wiki is not the worst solution, even though it's nonstandard. I
-strongly believe that SQL code cut/pasted into an MS Word document
-will not be long-term viable, and the same goes for ``e-mail your code
-to one person who will be in charge of uploading/managing it.''
+well.\footnote{Specifically: reusing a phenotype, and renewing or modifying
+a phenotype. These are more oriented toward machine-readable items.}
+In my imagined ideal world, people would use Git or other source code
+management software for this purpose. The main drawback is the
+learning curve, so I don't know whether this is actually going to
+happen. SQL/SAS code on the wiki is not the worst solution, even
+though it's nonstandard. I strongly believe that SQL code cut/pasted
+into an MS Word document will not be long-term viable, and the same
+goes for ``e-mail your code to one person who will be in charge of
+uploading/managing it.''
+
+\marginnote{More about MediaWiki: MediaWiki is the software that makes Wikipedia run, but anyone can
+install it to their Web server to create their own wiki. MediaWiki
+uses its own markup language called wikitext. Templates avoid a
+\emph{lot} of copy-pasting of wikicode. I'm more than happy to help
+with creating templates and dealing with markup.}
 
 \section{Timeline and goals}
 
-\paragraph{Already built:} A database space within CDW to store lists
-of adjudicated elements. A SharePoint space for phenomics core to store
-some documentation. A wiki system to store further documentation, allow
-for search, allow collaborative editing with easy versioning, and help
-SharePoint navigation. A very basic system to store source code (happens
-to be the wiki).
+\paragraph{Already built:}
+A database space within CDW to store lists of adjudicated elements. A
+SharePoint space for phenomics core to store some documentation. A
+wiki system to store further documentation, allow for search, allow
+collaborative editing with easy versioning, and help SharePoint
+navigation. A very basic system to store source code (happens to be
+the wiki).
 
-\paragraph{Very short term (1--2 months):} Decide on wiki vs.\ SharePoint
-vs.\ a combination vs.\ some other solution.\footnote{This depends on fixing access
-  to the wiki, or fixing the search function within SharePoint.} Organize the browsing
+\paragraph{Very short term (1--2 months):}
+Decide on continuing with current wiki vs.\ SharePoint vs.\ a combination vs.\ some other
+solution.\footnote{This depends on fixing access to the wiki, or
+  fixing the search function within SharePoint.} Organize the browsing
 function of the wiki (or other solution) to the specs of the phenomics
 core (Anne \& I discussed this in past).
 
-\paragraph{Long term (1 year +):} Agree on and possibly train on a more
-robust source code control system (or failing that, design the wiki to do
-the best we can). Agree on best practices for elements needed to document
-a phenotype.\footnote{who built this, when, using what process, for
-  what chief purpose/study/intent, why did they make the choices they
-  made, etc.} Document at least one phenotype using these practices,
-to serve as an exemplar for others. Develop a system to advertise what is in the
-process of being built (not just completed tasks).
+\paragraph{Long term (1 year +):}
+Agree on and possibly train on a more robust source code control
+system (or failing that, design the wiki to do the best we can). Agree
+on best practices for elements needed to document a
+phenotype.\footnote{Who built this, when, using what process, for what
+  chief purpose/study/intent, why did they make the choices they made,
+  etc.} Document at least one phenotype using these practices, to
+serve as an exemplar for others. Develop a system to advertise what is
+in the process of being built (not just completed tasks).
 
-\paragraph{Even longer term:} Have a system that infers a SME's internal mental
-model,\footnote{e.g.\ ``serum sodium is where LabChemTestName matches
+\paragraph{Even longer term:}
+Have a system that infers a SME's internal mental
+model,\footnote{E.g.\ ``serum sodium is where LabChemTestName matches
   the following 3 text strings, where Topography matches the following
   2 strings, or where LOINC is in the following set of 5 elements,
   except in the following 20 cases which have probably erroneous
   LOINCs or TestNames\ldots{}.''} from the SME answering
 ``keep/discard'' to CDW elements, with only slight further effort from
-the SME. (Nate has some ideas about how to approach this, e.g.\ a system that learns
-classification trees that the SME can select/edit at a high level.)
+the SME.\footnote{Nate has some ideas about how to approach this, e.g.\ a
+system that learns classification trees that the SME can select/edit
+at a high level.}
 
-\paragraph{Questions for the group:} Is the wiki the right place for
-SQL code? What training on the wiki do you want? What should be
-captured about each algorithm?
+\section{Questions for the group:}
 
-\section{More about MediaWiki and our server}
+Do you agree with my list of requirements? Does a wiki fit the bill?
+Is the wiki the right place for SQL code? What training on the wiki do
+you want? What should be captured about each algorithm?
 
-``A wiki is a Web application which allows people to add, modify, or
-delete content in collaboration with
-others.''\footnote{http://en.wikipedia.org/wiki/Wiki} MediaWiki is the
-software that makes Wikipedia run, but anyone can install it to their
-Web server to create their own wiki. MediaWiki uses its own markup
-language called wikitext. Templates avoid a \emph{lot} of copy-pasting
-of wikicode. I'm more than happy to help with creating templates and dealing with markup. The first use of our wiki for lab adjudication was May 2014.
 
 \end{document}
 
