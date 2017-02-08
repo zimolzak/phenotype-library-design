@@ -7,6 +7,43 @@
 
 \maketitle
 
+\section{What I imagine for phenotype library}
+
+Motivation: (a) VA data elements are not harmonized across stations,
+and that (b) phenotypes do this harmonization and also build low level
+phenotypes into higher order phenotypes.\footnote{For example, 130
+  stations ICD codes + labs + ??? $\to$ harmonized ICD + labs + ???
+  $\to$ diabetes + neuropathy $\to$ diabetic nephropathy $\to$ which
+  is a subset of diabetes with any microvascular complication $\to$
+  subset of diabetes with any complication at all, etc.}
+
+To start the process of defining a new phenotype, a subject matter
+expert (SME) works with the data pull team to search for candidate
+items that may contribute to the phenotype in question. The SME
+reviews the list that is retrieved, generating either a general rule
+to specify which items match the phenotype, or an enumerated list of
+which items match the phenotype. The data pull team then generates SQL
+code that represents the SME's rules, or a public database table that
+represents the enumerated list of data items, or even a statistical
+model of the likelihood of a patient having the given phenotype.
+
+Ideally, a robust phenotype library should exist, serving several
+functions. (1) The library would make the products of each SME/data
+review process \emph{available for viewing} by study coordinators or
+others, with ``provenance'' (responsible SME and data extractor)
+clearly noted, to allow study staff to trust a given phenotype. (2)
+The library would make phenotypes \emph{available for reuse}, for the
+purposes of other projects. (3) The library would allow easy searches
+across phenotypes, to allow new studies to discover what already
+exists. (4) The library would make phenotypes \emph{available for
+  renewal,} with their date of creation clearly noted, because data
+warehouse elements may change over time. (5) The library would
+document the rationale for decisions made by SME and data pull
+engineers.%\footnote{The basic idea is that the methods of science
+%  should be documented well enough to be reproducible---in other
+%  words, ``show your work.'' For our type of science, \emph{code is
+%    method.} See also http://sciencecodemanifesto.org}
+
 \section{Problem/niche}
 
 The Precision Oncology Project and the Point of Care Trial project
@@ -29,18 +66,6 @@ creates a query that represents this adjudication.\footnote{probably
 approval or ``sign off'' on the data pull at step 3, or possibly on
 the results of step 4.
 
-The data pull and NLP teams intend to use the wiki to capture this
-workflow so that these deliverables are \emph{available for viewing}
-by study coordinators or others, with ``provenance'' (responsible SME
-and data extractor) clearly noted; \emph{available for reuse} in a
-library, for the purposes of other projects; and \emph{available for
-  renewal,} with their date of creation clearly noted, because CDW
-elements may change over time. The rationale for the SME
-including/excluding certain tests can also be documented.\footnote{The
-  basic idea is that the methods of science should be documented well
-  enough to be reproducible---in other words, ``show your work.'' For
-  our type of science, \emph{code is method.} See also
-  http://sciencecodemanifesto.org}
 
 \section{Recent wiki changes} 
 
