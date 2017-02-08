@@ -79,13 +79,13 @@ not the worst solution, except for the fact that I hate SharePoint's
 search feature.
 
 Functions 2 and 4 (reuse phenotype, renew or modify phenotype) are
-more oriented toward machine-readable items (enumerated list of SIDs
+more oriented toward machine-readable items.\footnote{enumerated list of SIDs
 in a database table like MAVIN.DimLab, SQL code that describes a
 rules-based phenotype, SAS or R or whatever code that describes a
-statistical model of a phenotype, etc.). The industry standard way to
+statistical model of a phenotype, etc.} The industry standard way to
 manage this is absolutely not a wiki. In my imagined ideal world,
 people would use Git software to manage this code. There are other
-tools for source code management (e.g. IBM Rational Team Concert) too.
+tools for source code management too.\footnote{e.g.\ IBM Rational Team Concert}
 The main drawback is the learning curve, so I don't know whether this
 is actually going to happen. SQL/SAS code on the wiki is not the worst
 solution, even though it's nonstandard. I strongly believe that SQL
@@ -102,12 +102,12 @@ SharePoint space for phenomics core to store some documentation. Wiki
 system to store further documentation, allow for search, allow
 collaborative editing with easy versioning, and help SharePoint
 navigation. Very basic system to store source code (happens to be the
-wiki)
+wiki).
 
 \subsection{Very short term (1--2 months)}
 
-Decide on wiki vs SharePoint vs combination vs other solution. Depends
-on fixing access to wiki or fixing search within SharePoint. Organize
+Decide on wiki vs SharePoint vs combination vs other solution.\footnote{Depends
+on fixing access to wiki or fixing search within SharePoint.} Organize
 browsing function of the wiki (or other solution) to the specs of the
 phenomics core (Anne \& I discussed this in past).
 
@@ -115,22 +115,22 @@ phenomics core (Anne \& I discussed this in past).
 
 Agree on and possibly train on a more robust source code control
 system (or failing that, design wiki to do the best we can). Agree on
-best practices for elements needed document a phenotype (who built
+best practices for elements needed document a phenotype.\footnote{who built
 this, when, using what process, for what chief purpose/study/intent,
-why did they make the choices they made, etc.) Document at least one
+why did they make the choices they made, etc.} Document at least one
 phenotype using these practices, to serve as an exemplar for others.
 System to advertise what is in process of being built (not just
-completed tasks)
+completed tasks).
 
 \subsection{Even longer term}
 
-System that infers a SME's internal mental model (e.g. ``serum sodium
+System that infers a SME's internal mental model,\footnote{e.g.\ ``serum sodium
 is where LabChemTestName matches the following 3 text strings, where
 Topography matches the following 2 strings, or where LOINC is in the
 following set of 5 elements, except in the following 20 cases which
-have probably erroneous LOINCs or TestNames\ldots{}.''), from the SME
+have probably erroneous LOINCs or TestNames\ldots{}.''} from the SME
 answering ``keep/discard'' to CDW elements, with only slight further
-effort from the SME. (Nate has some approaches for this e.g. a system
+effort from the SME. (Nate has some approaches for this e.g.\ a system
 that learns classification trees that the SME can select/edit at a
 high level.)
 
