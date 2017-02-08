@@ -10,21 +10,21 @@
 Motivation: VA data elements are not harmonized across stations.
 \emph{Phenotype} is the term we use for a set of harmonized data
 elements, or a higher-order concept made of many such ``building
-blocks.''\footnote{For example, 130 stations' ICD codes + labs
-  $\to$ harmonized ICD + labs $\to$ diabetes + neuropathy $\to$
-  diabetic neuropathy $\to$ which is a subset of diabetes with any
+blocks.''\footnote{For example, 130 stations' ICD codes + labs $\to$
+  harmonized ICD + labs $\to$ diabetes + neuropathy $\to$ diabetic
+  neuropathy $\to$ which is a subset of diabetes with any
   microvascular complication $\to$ subset of diabetes with any
   complication at all, etc.}
 
 \section{What I imagine for a phenotype library}
 
 When a subject matter expert (SME), analyst, statistician, and/or data
-pull engineer create a phenotype, the result can be: SQL
-code that represents the SME's rules, or a public database table that
-represents the enumerated list of included/excluded data items, or
-even a statistical model of the likelihood of a patient having the
-given phenotype. Ideally, a robust phenotype library should exist,
-serving several functions.
+pull engineer create a phenotype, the result can be: SQL code that
+represents the SME's rules, or a public database table that represents
+the enumerated list of included/excluded data items, or even a
+statistical model of the likelihood of a patient having the given
+phenotype. Ideally, a robust phenotype library should exist, serving
+several functions.
 
 (1) The library would make the products of each SME/data review
 process \emph{available for viewing} by study coordinators or others,
@@ -52,8 +52,9 @@ rationale.\footnote{A wiki is simply a Web application which allows
   people to add, modify, or delete content in collaboration with
   others. Requirements 1, 3, and 5 all involve basically
   human-readable items with English sentences.} But I'm not sure
-whether the current wiki is the best long-term solution. Note that SharePoint
-has a search feature, but it currently does not work at all.
+whether the current wiki is the best long-term solution. Note that
+SharePoint has a search feature, but it currently does not work at
+all.
 
 A wiki does \emph{not} serve some of the functions as
 well.\footnote{Specifically: reusing, renewing, or modifying
@@ -72,7 +73,8 @@ uploading/managing it.''
   language and also provides a template system which helps avoid a lot
   of copy-pasting of markup code. I'm more than happy to help with
   creating templates and dealing with markup. The MediaWiki instance
-  hosted for us by VINCI is currently having authentication problems.}
+  hosted for us by VINCI is currently having authentication problems,
+  however.}
 
 \section{Timeline and goals}
 
@@ -80,46 +82,47 @@ uploading/managing it.''
 A database space within CDW to store lists of adjudicated elements. A
 SharePoint space for the phenomics core to store some documentation. A
 wiki system to store further documentation, allow for search, allow
-collaborative editing with easy versioning, and to help with SharePoint
-navigation. A very basic system to store source code (this system happens to be
-the wiki). Note that SharePoint has a wiki function too; also the
-SharePoint search function may be improved somewhat in summer, but I'm
-not sure to what extent.
+collaborative editing with easy versioning, and to help with
+SharePoint navigation. A very basic system to store source code (this
+system happens to be the wiki). Note that SharePoint has a wiki
+function too; also the SharePoint search function may be improved
+somewhat in summer, but I'm not sure to what extent.
 
 \paragraph{Very short term (1--2 months):}
 Decide on continuing with current wiki vs.\ SharePoint vs.\ a
 combination vs.\ some other solution. Organize the browsing function
-of the library to the specs of the phenomics core (Anne \& I discussed this
-in the past).
+of the library to the specs of the phenomics core (Anne \& I discussed
+this in the past).
 
 \paragraph{Long term (1 year +):}
 Agree on---and possibly train on---a more robust source code control
-system (or failing that, design the library to do the best we can). Agree
-on best practices for elements needed to document a
-phenotype.\footnote{E.g.\ who built this, when, using what process, for what
-  chief purpose/study/intent, why did they make the choices they made,
-  etc.} Document at least one phenotype using these practices, to
-serve as an exemplar for others. Develop a system to advertise what is
-\emph{in the process of being built} (not just completed tasks).
+system (or failing that, design the library to do the best we can).
+Agree on best practices for elements needed to document a
+phenotype.\footnote{E.g.\ who built this, when, using what process,
+  for what chief purpose/study/intent, why did they make the choices
+  they made, etc.} Document at least one phenotype using these
+practices, to serve as an exemplar for others. Develop a system to
+advertise what is \emph{in the process of being built} (not just
+completed tasks).
 
 \paragraph{Even longer term:}
 Have a system that infers a SME's internal mental
 model,\footnote{E.g.\ ``serum sodium is where LabChemTestName matches
-  these 3 given text strings, where Topography matches these
-  2 given strings, or where LOINC is one of these 5 given codes,
-  except in these 20 given cases which have probably erroneous
-  LOINCs or TestNames\ldots{}.''} from the SME answering
-``keep/discard'' to CDW elements, with only slight further effort from
-the SME.\footnote{Nate Fillmore (BD-STEP fellow) has some ideas about how to approach this,
+  these 3 given text strings, where Topography matches these 2 given
+  strings, or where LOINC is one of these 5 given codes, except in
+  these 20 given cases which have probably erroneous LOINCs or
+  TestNames\ldots{}.''} from the SME answering ``keep/discard'' to CDW
+elements, with only slight further effort from the SME.\footnote{Nate
+  Fillmore (BD-STEP fellow) has some ideas about how to approach this,
   e.g.\ a system that learns classification trees that the SME can
   select/edit at a high level.}
 
 \section{Questions for the group}
 
 Do you agree with my list of requirements? Does a wiki fit the bill
-(See ``Very short term'' goals above)?
-Is the wiki the right place for SQL code? What training or further information on the wiki do
-you want? What should be captured about each phenotype?
+(See ``Very short term'' goals above)? Is the wiki the right place for
+SQL code? What training or further information on the wiki do you
+want? What should be captured about each phenotype?
 
 \end{document}
 
