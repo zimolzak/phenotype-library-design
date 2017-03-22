@@ -1,7 +1,7 @@
 \documentclass{tufte-handout}
 \title{Design of a VA Phenotype Library}
 \author{Andy Zimolzak, MD, MMSc}
-\date{February 8, 2017}
+\date{March, 2017}
 
 \begin{document}
 
@@ -96,18 +96,25 @@ this lab test to the CDW), p1 = first percentile.
 \hline
 LabChemTestName & Topography & Units & p50 & Count\\
 \hline
-SODIUM & SERUM & & 140 & 115053\\
-RANDOM URINE SODIUM & URINE &  & 194.16 & 734\\
-SODIUM & URINE &  & 155.94 & 89\\
-SODIUM & SERUM &  & 140 & 126\\
-SODIUM & URINE,24HR &  & 150 & 98\\
-SODIUM & PERITONEAL &  & 132 & 10\\
-SODIUM*IA & BLOOD &  & 139 & 714\\
+Hgb A LC & Blood & \% & 97.7 & 2559\\
+Hgb & Drainage & g/dL & 2.1 & 110\\
+Hgb & Blood & \% & 12.4 & 1384861\\
+Hgb & Blood & g/dL & 13.1 & 1734588\\
+Glyco Hgb & Blood & \% & 8.2 & 767000\\
+Hgb & Plasma & gm/dl & 13.5 & 3522885\\
+Retic Hgb & Blood & pg & 31.7 & 9388\\
+1700 more rows\ldots{} & \ldots{} & \ldots{} & \ldots{} & \ldots{} \\
 \hline
 \\
 \end{tabular}
 
+%% Note there's more in the SIAM presentation.
 
+Very nice/ugly lab units variability from Mini-Sentinel has been
+published.\footnote{Raebel \emph{et al. Pharmacoepidemiol Drug Saf.}
+  2014 Jun;23(6):609--18.} Just a few examples of units observed in
+the data, for the hemoglobin A1c (glycosylated hemoglobin) test: \%,
+\%HB, \% A1C, MG/DL, G/DL, NULL, Blank, U.
 
 \section{What's in CDW Library---and misc.}
 
