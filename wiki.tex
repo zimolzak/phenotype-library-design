@@ -14,11 +14,21 @@ blocks.''\footnote{For example, 130 stations' ICD codes + labs $\to$
   harmonized ICD + labs $\to$ diabetes + neuropathy $\to$ diabetic
   neuropathy $\to$ which is a subset of diabetes with any
   microvascular complication $\to$ subset of diabetes with any
-  complication at all, etc.}
+  complication at all, etc. Other terms: data cleaning, data
+  characterization, data integration, data modeling} Because 130
+stations are not incentivized to \ldots{}, % paste in here
+``data aggregation across the
+VHA is highly problematic, and data validity is often impossible to
+verify.''\footnote{Giroir BP, Wilensky GR, \emph{N Engl J Med}
+  373:1693--1695. PMID: 26422644}
+
+\section{Problems}
+
+Our 130+ stations %% paste in email text here.
 
 \section{Our adjudication process}
 
-For a lab: Think of search strings. Write query (SQL + SAS). Return
+For a lab: Think up some search strings. Write query (SQL + SAS). Return
 sheet to SME for adjudication. Return to analyst. SIDs to database.
 Future: save code, documentation, and data, and metadata. We have a
 request for metadata in the database. Documentation can't live there
@@ -38,16 +48,17 @@ Adjudication metadata & SharePoint & MS SQL Server?\\
 \\
 \end{tabular}
 
-Future: want to be national.  Other CSP studies within Boston, albeit
-less informatics heavy. Other CSP studies nationally (other
-coordinating centers). Non-CSP research (each local VAMC).
-Non-research. DCP talks OK to MVP. MVP talks OK to BD-STEP. But those
-are relatively informal. Trying to do user contributed and comparison
-with OMOP. Slow going on both fronts is my impression. Maybe due to
-investment and trust in our own processes and lack of same in others'?
-Code sharing and trust.
+That's just labs. One of the simpler and more standardized ones. Even
+more complex phenotypes. Future: want to be national. Other CSP
+studies within Boston, albeit less informatics heavy. Other CSP
+studies nationally (other coordinating centers). Non-CSP research
+(each local VAMC). Non-research. DCP talks OK to MVP. MVP talks OK to
+BD-STEP. But those are relatively informal. Trying to do user
+contributed and comparison with OMOP. Slow going on both fronts is my
+impression. Maybe due to investment and trust in our own processes and
+lack of same in others'? Code sharing and trust.
 
-%%% note: go get OMOP. Go get DIMLAB2. 
+%%% note: go get OMOP. Go get DIMLAB2. Get list of sta3ns?
 
 \section{Example phenotypes}
 
@@ -56,21 +67,59 @@ Code sharing and trust.
 Failed first line platinum containing chemotherapy. DCP often
 wanting to know ``where did this come from?''
 
+\noindent \begin{tabular}{llllllll}
+\\
+\hline
+LOINC & LabChemTestName & Sta3n & Topography & p1 & p50 & p99 & Count\\
+\hline
+Missing & SODIUM & 603 & SERUM & 126 & 140 & 149 & 115053\\
+Missing & RANDOM URINE SODIUM & 581 & URINE & 6 & 52 & 194.16 & 734\\
+Missing & SODIUM & 603 & URINE & 5 & 49.5 & 155.94 & 89\\
+2947-0 & SODIUM & 689 & SERUM & 133.25 & 140 & 144.75 & 126\\
+2947-0 & SODIUM & 621 & URINE,24HR & 13.804 & 150 & 877.72 & 98\\
+2950-4 & SODIUM & 689 & PERITONEAL & 124 & 132 & 138.84 & 10\\
+2950-4 & SODIUM*IA & 636 & BLOOD & 125 & 139 & 170.99 & 714\\
+\hline
+\\
+\end{tabular}
+
+%\begin{fullwidth}
+Table abbreviations: LOINC = logical observation identifiers names and
+codes (should be universal standard for identifying lab tests), Sta3n
+= station 3-number code (which of the 130 VistA instances contributed
+this lab test to the CDW), p1 = first percentile.
+%\end{fullwidth}
+
+
+\noindent \begin{tabular}{lllll}
+\\
+\hline
+LabChemTestName & Topography & Units & p50 & Count\\
+\hline
+SODIUM & SERUM & & 140 & 115053\\
+RANDOM URINE SODIUM & URINE &  & 194.16 & 734\\
+SODIUM & URINE &  & 155.94 & 89\\
+SODIUM & SERUM &  & 140 & 126\\
+SODIUM & URINE,24HR &  & 150 & 98\\
+SODIUM & PERITONEAL &  & 132 & 10\\
+SODIUM*IA & BLOOD &  & 139 & 714\\
+\hline
+\\
+\end{tabular}
+
+
+
 \section{What's in CDW Library---and misc.}
 
 Potassium, albumin, total cholesterol, etc. HSR-DATA Listserv is a
 resource. Virec is a resource. Lab notebook metaphor. Rocket or
 satellite metaphor.
 
-\section{Demo}
-
-Nate's thing: active learning.
-
 \section{Future}
 
-List of popular phenotypes and their metadata. For the very most
-popular ones, counts, monthly perhaps? What data model? OMOP?
-Probabilistic or complex phenotype. 
+Nate's thing: active learning. List of popular phenotypes and their
+metadata. For the very most popular ones, counts, monthly perhaps?
+What data model? OMOP? Probabilistic or complex phenotype.
 
 \section{Why in the first place}
 
