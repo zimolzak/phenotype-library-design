@@ -58,14 +58,29 @@ contributed and comparison with OMOP. Slow going on both fronts is my
 impression. Maybe due to investment and trust in our own processes and
 lack of same in others'? Code sharing and trust.
 
+Example quote from documentation: ``[S]hould the ETL process be
+interrupted by any kind of database, host machine or connection
+issue\ldots{}, in order to protect data and avoid partial load the ETL
+will not re-execute itself and a warning message will be written into
+the log table on the next execution attempts, until the interrupted
+ETL process is manually checked and data integrity is confirmed.''
+
 %%% note: go get OMOP. Go get DIMLAB2. Get list of sta3ns?
 
 \section{Example phenotypes}
 
 %% table of fake sodium? fake a1c?
 
-Failed first line platinum containing chemotherapy. DCP often
-wanting to know ``where did this come from?''
+Failed first line platinum containing chemotherapy. DCP often wanting
+to know ``where did this come from?'' Examples of DCP needs: urgent
+coronary revascularization (completed or attempted) because of
+unstable angina; hospitalization for acute congestive heart failure;
+erectile dysfunction, defined as first prescription for PDE5 inhibitor
+or referral for ED; doubling of serum creatinine from baseline; first
+use of a medication for diabetes. ``In cases where the outcome
+diagnosis is not clear based on the electronic adjudication, we will
+resort to manual adjudication\ldots{}. We will also manually adjudicate
+10\% of outcomes confirmed or refuted by our algorithms\ldots{}.''
 
 \noindent \begin{tabular}{llllllll}
 \\
@@ -145,7 +160,7 @@ restrictions on accessibility.''\footnote{\emph{Nature} 514:536,
   2014-10-30}
 
 ``This often necessitates that code be written quickly with no
-expectation that it will be maintained or used by oth- ers in their
+expectation that it will be maintained or used by others in their
 experiments. But that code is still an integral part of the materials
 and methods. Just as with biological materials, such code should be
 made available alongside results obtained using it, with sufficient
@@ -162,6 +177,16 @@ results, will it be possible to run the whole analysis with one click?
 If not, why not?
 
 \noindent \rule{\textwidth}{1pt}
+
+
+
+
+
+%%%%%%%% %%%%%%%% %%%%%%%% %%%%%%%% %%%%%%%% %%%%%%%% %%%%%%%% 
+
+
+
+
 
 \section{What I imagine for a phenotype library}
 
@@ -274,7 +299,10 @@ want? What should be captured about each phenotype?
 
 % LocalWords:  MAVERIC vhabosapp Jira workflow SME operationalize CDW DMR CSPCC
 % LocalWords:  LabChemTestName workflows MediaWiki MySQL PHP wikitext AST HPC
-% LocalWords:  GenISIS Phsieh Lalitha viswanath Mmcduffie DCP Rpourali Nilla
-% LocalWords:  wikicode microvascular SME's Operationalizing SIDs SAS
-%%  LocalWords:  SharePoint SharePoint's MAVIN DimLab phenomics LOINC
-%%  LocalWords:  LOINCs TestNames subfolders VINCI
+% LocalWords:  GenISIS Phsieh Lalitha viswanath Mmcduffie DCP Rpourali Nilla BD
+% LocalWords:  wikicode microvascular SME's Operationalizing SIDs SAS VHA Engl
+%%  LocalWords:  SharePoint SharePoint's MAVIN DimLab phenomics LOINC Giroir dl
+%%  LocalWords:  LOINCs TestNames subfolders VINCI incentivized Wilensky lll HB
+% LocalWords:  CSP VAMC OMOP hould ETL llllllll lllll Hgb Glyco Retic Raebel
+% LocalWords:  Pharmacoepidemiol Saf glycosylated HSR Listserv Virec plasmids
+% LocalWords:  Timeline versioning revascularization PDE
