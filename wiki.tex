@@ -81,13 +81,20 @@ Potassium, albumin, total cholesterol, etc. HSR-DATA Listserv is a
 resource. Virec is a resource. Lab notebook metaphor. Rocket or
 satellite metaphor.
 
-\section{Future}
-
 Nate's thing: active learning. List of popular phenotypes and their
 metadata. For the very most popular ones, counts, monthly perhaps?
 What data model? OMOP? Probabilistic or complex phenotype.
 
-\section{Why in the first place}
+Have a system that infers a SME's internal mental
+model,\footnote{E.g.\ ``serum sodium is where LabChemTestName matches
+  these 3 given text strings, where Topography matches these 2 given
+  strings, or where LOINC is one of these 5 given codes, except in
+  these 20 given cases which have probably erroneous LOINCs or
+  TestNames\ldots{}.''} from the SME answering ``keep/discard'' to CDW
+elements, with only slight further effort from the SME.\footnote{Nate
+  Fillmore (BD-STEP fellow) has some ideas about how to approach this,
+  e.g.\ a system that learns classification trees that the SME can
+  select/edit at a high level.}
 
 The basic idea is that the methods of science should be documented
 well enough to be reproducible---in other words, ``show your work.''
@@ -98,7 +105,6 @@ http://sciencecodemanifesto.org}
   reaching a paper's conclusions, we require a statement describing
   whether that code is available and setting out any restrictions on
   accessibility.'' \emph{Nature} 514:536, 2014-10-30}
-
 
 Going even further, When Frank Lederle \emph{et al.}\ publish the DCP
 results, will it be possible to run the whole analysis with one click?
@@ -111,7 +117,6 @@ If not, why not?
   this code may be accompanied by a disclaimer that it is released
   only for reporting and archival purposes.'' \emph{Nature Methods} 11
   (3): 211. March, 2014.}
-
 
 \section{What I imagine for a phenotype library}
 
@@ -141,18 +146,7 @@ etc.\ and allow collaborative editing of this documentation. Ideally,
 changes would be audited/tracked. Possibly it should allow links among
 documents. (6) The library should be available across VA nationally.
 
-\section{Aside about new phenotype build process}
 
-Have a system that infers a SME's internal mental
-model,\footnote{E.g.\ ``serum sodium is where LabChemTestName matches
-  these 3 given text strings, where Topography matches these 2 given
-  strings, or where LOINC is one of these 5 given codes, except in
-  these 20 given cases which have probably erroneous LOINCs or
-  TestNames\ldots{}.''} from the SME answering ``keep/discard'' to CDW
-elements, with only slight further effort from the SME.\footnote{Nate
-  Fillmore (BD-STEP fellow) has some ideas about how to approach this,
-  e.g.\ a system that learns classification trees that the SME can
-  select/edit at a high level.}
 
 \end{document}
 
