@@ -12,6 +12,14 @@ It all starts with the research protocol!
 
 What should we capture and why?
 
+Extremely hard to sync up with people. You're working on your thing,
+then you find out somebody else has been working simultaneously, not
+in the exact same direction, but in a similar one. It's an enormous
+proposition to brain dump from you to them and vice versa, and then to
+decide on a common direction. The sync up process can effectively halt
+all work at times, and both sides are likely to see that some of their
+work (sunk costs) does not get incorporated in the final product.
+
 Motivation: VA data elements are not harmonized across stations.
 \emph{Phenotype} is the term we use for a set of harmonized data
 elements, or a higher-order concept made of many such ``building
@@ -74,8 +82,6 @@ ETL process is manually checked and data integrity is confirmed.''
 
 \section{Example phenotypes}
 
-%% table of fake sodium? fake a1c?
-
 Failed first line platinum containing chemotherapy. DCP often wanting
 to know ``where did this come from?'' Examples of DCP needs: urgent
 coronary revascularization (completed or attempted) because of
@@ -86,49 +92,6 @@ use of a medication for diabetes. ``In cases where the outcome
 diagnosis is not clear based on the electronic adjudication, we will
 resort to manual adjudication\ldots{}. We will also manually adjudicate
 10\% of outcomes confirmed or refuted by our algorithms\ldots{}.''
-
-\noindent \begin{tabular}{llllllll}
-\\
-\hline
-LOINC & LabChemTestName & Sta3n & Topography & p1 & p50 & p99 & Count\\
-\hline
-Missing & SODIUM & 603 & SERUM & 126 & 140 & 149 & 115053\\
-Missing & RANDOM URINE SODIUM & 581 & URINE & 6 & 52 & 194.16 & 734\\
-Missing & SODIUM & 603 & URINE & 5 & 49.5 & 155.94 & 89\\
-2947-0 & SODIUM & 689 & SERUM & 133.25 & 140 & 144.75 & 126\\
-2947-0 & SODIUM & 621 & URINE,24HR & 13.804 & 150 & 877.72 & 98\\
-2950-4 & SODIUM & 689 & PERITONEAL & 124 & 132 & 138.84 & 10\\
-2950-4 & SODIUM*IA & 636 & BLOOD & 125 & 139 & 170.99 & 714\\
-\hline
-\\
-\end{tabular}
-
-%\begin{fullwidth}
-Table abbreviations: LOINC = logical observation identifiers names and
-codes (should be universal standard for identifying lab tests), Sta3n
-= station 3-number code (which of the 130 VistA instances contributed
-this lab test to the CDW), p1 = first percentile.
-%\end{fullwidth}
-
-
-\noindent \begin{tabular}{lllll}
-\\
-\hline
-LabChemTestName & Topography & Units & p50 & Count\\
-\hline
-Hgb A LC & Blood & \% & 97.7 & 2559\\
-Hgb & Drainage & g/dL & 2.1 & 110\\
-Hgb & Blood & \% & 12.4 & 1384861\\
-Hgb & Blood & g/dL & 13.1 & 1734588\\
-Glyco Hgb & Blood & \% & 8.2 & 767000\\
-Hgb & Plasma & gm/dl & 13.5 & 3522885\\
-Retic Hgb & Blood & pg & 31.7 & 9388\\
-1700 more rows\ldots{} & \ldots{} & \ldots{} & \ldots{} & \ldots{} \\
-\hline
-\\
-\end{tabular}
-
-%% Note there's more in the SIAM presentation.
 
 Very nice/ugly lab units variability from Mini-Sentinel has been
 published.\footnote{Raebel \emph{et al. Pharmacoepidemiol Drug Saf.}
