@@ -1,5 +1,33 @@
 digraph{
 
-a -> b;
+s1 -> sildenafil;
+s2 -> sildenafil;
+s4 [label="..."]
+s4 -> sildenafil;
+s130 -> sildenafil;
+
+s1a [label="s1"]
+s2a [label="s2"]
+s3a [label="..."]
+s4a [label="s130"]
+s1a -> tadalafil;
+s2a -> tadalafil;
+s3a -> tadalafil;
+s4a -> tadalafil;
+
+tadalafil -> pde5;
+sildenafil -> pde5;
+
+s1r [label="s1"]
+s2r [label="s2"]
+s3r [label="..."]
+s4r [label="s130"]
+s1r -> referral;
+s2r -> referral;
+s3r -> referral;
+s4r -> referral;
+
+pde5 -> ED;
+referral -> ED;
 
 }
