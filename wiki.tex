@@ -1,5 +1,4 @@
 \documentclass{tufte-handout}
-\usepackage{graphicx}
 \title{Design of a VA Phenotype Library}
 \author{Andy Zimolzak, MD, MMSc}
 \date{March, 2017}
@@ -39,37 +38,14 @@ verify.''\footnote{Giroir BP, Wilensky GR, \emph{N Engl J Med}
 
 Our 130+ stations %% paste in email text here.
 
-\section{Our adjudication process}
-
-For a lab: Think up some search strings. Write query (SQL + SAS). Return
-sheet to SME for adjudication. Return to analyst. SIDs to database.
-Future: save code, documentation, and data, and metadata. We have a
-request for metadata in the database. Documentation can't live there
-feasibly. Code probably not either. Manually updating a revision
-history of a document is at best onerous---at worst unsustainable.
-
-\noindent \begin{tabular}{lll}
-\\
-\hline
-Work product & Current & Future\\
-\hline
-Code & Some in SharePoint & IBM Rational Team Concert or \ldots{}?\\
-Documentation & SharePoint & MediaWiki or \ldots{}?\\
-Ready-to-use adjudications & MS SQL Server\\
-Adjudication metadata & SharePoint & MS SQL Server?\\
-\hline
-\\
-\end{tabular}
-
-That's just labs. One of the simpler and more standardized ones. Even
-more complex phenotypes. Future: want to be national. Other CSP
-studies within Boston, albeit less informatics heavy. Other CSP
-studies nationally (other coordinating centers). Non-CSP research
-(each local VAMC). Non-research. DCP talks OK to MVP. MVP talks OK to
-BD-STEP. But those are relatively informal. Trying to do user
-contributed and comparison with OMOP. Slow going on both fronts is my
-impression. Maybe due to investment and trust in our own processes and
-lack of same in others'? Code sharing and trust.
+Future: want to be national. Other CSP studies within Boston, albeit
+less informatics heavy. Other CSP studies nationally (other
+coordinating centers). Non-CSP research (each local VAMC).
+Non-research. DCP talks OK to MVP. MVP talks OK to BD-STEP. But those
+are relatively informal. Trying to do user contributed and comparison
+with OMOP. Slow going on both fronts is my impression. Maybe due to
+investment and trust in our own processes and lack of same in others'?
+Code sharing and trust.
 
 Example quote from documentation: ``[S]hould the ETL process be
 interrupted by any kind of database, host machine or connection
@@ -143,12 +119,6 @@ purposes.''\footnote{\emph{Nature Methods} 11 (3): 211. March, 2014.}
 Going even further, When Frank Lederle \emph{et al.}\ publish the DCP
 results, will it be possible to run the whole analysis with one click?
 If not, why not?
-
-\begin{figure}
-\includegraphics[width=\linewidth]{dcp.png}
-\caption{Higher-order phenotype for DCP}
-\label{dcpgraph}
-\end{figure}
 
 \section{What I imagine for a phenotype library}
 
