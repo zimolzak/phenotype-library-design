@@ -8,6 +8,10 @@
 
 \maketitle
 
+It all starts with the research protocol!
+
+What should we capture and why?
+
 Motivation: VA data elements are not harmonized across stations.
 \emph{Phenotype} is the term we use for a set of harmonized data
 elements, or a higher-order concept made of many such ``building
@@ -183,21 +187,6 @@ If not, why not?
 \label{dcpgraph}
 \end{figure}
 
-\vspace{4ex}
-
-
-\noindent \rule{\textwidth}{1pt}
-
-
-
-
-
-%%%%%%%% %%%%%%%% %%%%%%%% %%%%%%%% %%%%%%%% %%%%%%%% %%%%%%%% 
-
-
-
-
-
 \section{What I imagine for a phenotype library}
 
 When a subject matter expert (SME), analyst, statistician, and/or data
@@ -226,67 +215,8 @@ etc.\ and allow collaborative editing of this documentation. Ideally,
 changes would be audited/tracked. Possibly it should allow links among
 documents. (6) The library should be available across VA nationally.
 
-\section{Operationalizing the library}
+\section{Aside about new phenotype build process}
 
-I think a wiki serves \emph{some} of these requirements well,
-especially search; and viewing provenance, documentation, and
-rationale.\footnote{A wiki is a Web application that allows people to
-  add, modify, or delete content in collaboration with others. Note
-  that functions 1, 3, and 5 involve human-readable English text.} But
-I'm not sure whether the current wiki is the best long-term solution.
-Note that SharePoint has a search feature, but it currently does not
-work at all.
-
-A wiki does \emph{not} serve some of the functions as
-well.\footnote{Specifically reusing, renewing, or modifying
-  phenotypes. These functions depend more on machine-readable items.}
-In my imagined ideal world, people would use Git or other source code
-management software to store SQL, SAS, etc.\ code. The main drawback
-is the learning curve, so I don't know whether this is actually going
-to happen. Storing code on the wiki is not the worst solution, even
-though it's nonstandard. I strongly believe that SQL code cut/pasted
-into an MS Word document will not be long-term viable, and the same
-goes for ``e-mail your code to one person who will be in charge of
-uploading/managing it.''
-
-\marginnote{\textbf{More about our current wiki:} It uses MediaWiki,
-  which is the software that makes Wikipedia run. MediaWiki uses its
-  own markup language and also provides a template system which helps
-  avoid a lot of copy-pasting of markup code, and a range of other
-  features. I'm more than happy to help with creating templates and
-  dealing with markup. The MediaWiki instance hosted for us by VINCI
-  is currently having authentication problems, however.}
-
-\section{Timeline and goals}
-
-\paragraph{Already built:}
-A database space within CDW to store lists of adjudicated elements. A
-SharePoint space for the phenomics core to store some documentation. A
-wiki system to store further documentation, allow for search, allow
-collaborative editing with easy versioning, and to help with
-SharePoint navigation. A very basic system to store source code (this
-system happens to be the wiki). Note that SharePoint has a wiki
-function too; also the SharePoint search function may be improved
-somewhat in summer, but I'm not sure to what extent.
-
-\paragraph{Very short term (1--2 months):}
-Decide on continuing with current wiki vs.\ SharePoint vs.\ a
-combination vs.\ some other solution. Organize the browsing function
-of the library to the specs of the phenomics core (Anne \& I discussed
-this in the past).
-
-\paragraph{Long term (1 year +):}
-Agree on---and possibly train on---a more robust source code control
-system (or failing that, design the library to do the best we can).
-Agree on best practices for elements needed to document a
-phenotype.\footnote{E.g.\ who built this, when, using what process,
-  for what chief purpose/study/intent, why did they make the choices
-  they made, etc.} Document at least one phenotype using these
-practices, to serve as an exemplar for others. Develop a system to
-advertise what is \emph{in the process of being built} (not just
-completed tasks).
-
-\paragraph{Even longer term:}
 Have a system that infers a SME's internal mental
 model,\footnote{E.g.\ ``serum sodium is where LabChemTestName matches
   these 3 given text strings, where Topography matches these 2 given
@@ -297,13 +227,6 @@ elements, with only slight further effort from the SME.\footnote{Nate
   Fillmore (BD-STEP fellow) has some ideas about how to approach this,
   e.g.\ a system that learns classification trees that the SME can
   select/edit at a high level.}
-
-\section{Questions for the group}
-
-Do you agree with my list of requirements? Does a wiki fit the bill
-(see ``Very short term'' goals above)? Is the wiki the right place for
-SQL code? What training or further information on the wiki do you
-want? What should be captured about each phenotype?
 
 \end{document}
 
