@@ -8,28 +8,31 @@
 \maketitle
 
 It all starts with the research protocol! What should we capture and
-why? VA data elements are not harmonized across stations. We have 130+
-stations which are not incentivized to represent data in the same
-way.\footnote{``[D]ata aggregation across the VHA is highly
+why? 
+
+Motivation: VA data elements are not harmonized across stations. We
+have 130+ stations which are not incentivized to represent data in the
+same way.\footnote{``[D]ata aggregation across the VHA is highly
   problematic, and data validity is often impossible to verify.''
   \emph{N Engl J Med} 373:1693--1695} Ugly units in lab tests are not
 unique to VA, however.\footnote{Hemoglobin A1c units: ``\%, \%HB, \%
   A1C, MG/DL, G/DL, NULL, Blank, U.'' \emph{Pharmacoepidemiol Drug
     Saf.} 23(6):609--18.} \emph{Phenotype} is the term we use for a
 set of harmonized data elements, or a higher-order concept made of
-many such ``building blocks.'' We sometimes have probabilistic or
-complex phenotypes. DCP often wanting to know ``where did this come
+many such ``building blocks.'' When a subject matter expert (SME),
+analyst, statistician, and/or data pull engineer create a phenotype,
+the result can be: SQL code that represents the SME's rules, or a
+public database table that represents the enumerated list of
+included/excluded data items, or even a statistical model of the
+likelihood of a patient having the given phenotype.
+
+
+DCP often wanting to know ``where did this come
 from?''\footnote{Failed first line platinum containing chemotherapy.
   Urgent coronary revascularization (completed or attempted) because
   of unstable angina. Erectile dysfunction, defined as first
   prescription for PDE5 inhibitor or referral for ED.}
 
-When a subject matter expert (SME), analyst, statistician, and/or data
-pull engineer create a phenotype, the result can be: SQL code that
-represents the SME's rules, or a public database table that represents
-the enumerated list of included/excluded data items, or even a
-statistical model of the likelihood of a patient having the given
-phenotype. 
 
 Code versus documentation versus data versus metadata. Documentation
 is in sentences and paragraphs.\footnote{E.g.\ ``[S]hould the ETL
@@ -45,26 +48,29 @@ is in sentences and paragraphs.\footnote{E.g.\ ``[S]hould the ETL
 
 
 Ideally, a robust phenotype library should exist, serving several
-functions: (1) The library would make the products of each SME/data
-review process \emph{available for viewing} by study coordinators or
-others, with ``provenance'' (responsible SME and data extractor)
-clearly noted, to allow study staff to trust a given phenotype. It
-should also make it easy to browse an overview of all phenotypes
-without having to drill down into numerous different subfolders. (2)
-The library would make phenotypes \emph{available for reuse}, for the
-purposes of other projects. (3) The library would allow easy
-\emph{searches across phenotypes,} to allow new studies to discover
-what already exists. Importantly, search should cover the contents of
-each document---not just titles. (4) The library would make phenotypes
-\emph{available for renewal,} with their date of creation clearly
-noted, because data warehouse elements may change over time. (5) The
-library would \emph{document} the rationale for decisions made by SME,
-analyst, etc.\ and allow collaborative editing of this documentation.
+functions: 
+
+The library would make the products of each SME/data review process
+\emph{available for viewing} by study coordinators, either by
+searching, or by browsing an overview of all available phenotypes; and
+phenotype or adjudication data should be \emph{available for immediate
+  use} by study analysts writing further database code.
+
+The \emph{code} used in the process of deriving a phenotype should be
+preserved, as the validity of a study's conclusions rests in part on
+the adjudication code.
+
+Phenotype \emph{metadata} (such as responsible SME and data
+extractors, and date of creation) should be clearly noted, to allow
+study staff to trust a phenotype, and to allow phenotyping core
+personnel to renew elements over time.
+
+The library would \emph{document} the rationale for decisions made by
+SME, analyst, etc.\ and allow collaborative editing of this
+documentation.
 
 
 %%% note: go get OMOP. Go get DIMLAB2. Get list of sta3ns?
-
-List of popular phenotypes and their metadata.  What data model? OMOP?
 
 
 The basic idea is that the methods of science should be documented
@@ -92,7 +98,8 @@ mental model,\footnote{E.g.\ ``serum sodium is where LabChemTestName
 ``keep/discard'' to CDW elements, with only slight further effort from
 the SME. For the very most popular ones, counts, monthly perhaps?
 
-The library should be available across VA nationally. Other CSP
+The library should be available across VA nationally. The library would make phenotypes \emph{available for reuse}, for the
+purposes of other projects. Other CSP
 studies within Boston, albeit less informatics heavy. Other CSP
 studies nationally (other coordinating centers). Non-CSP research
 (each local VAMC). Non-research. DCP talks OK to MVP. MVP talks OK to
@@ -119,6 +126,7 @@ the final product.
 % LocalWords:  wikicode microvascular SME's Operationalizing SIDs SAS VHA Engl
 %%  LocalWords:  SharePoint SharePoint's MAVIN DimLab phenomics LOINC Giroir dl
 %%  LocalWords:  LOINCs TestNames subfolders VINCI incentivized Wilensky lll HB
-% LocalWords:  CSP VAMC OMOP hould ETL llllllll lllll Hgb Glyco Retic Raebel
+% LocalWords:  CSP VAMC OMOP hould ETL llllllll lllll Hgb Glyco Retic Raebel ur
 % LocalWords:  Pharmacoepidemiol Saf glycosylated HSR Listserv Virec plasmids
-% LocalWords:  Timeline versioning revascularization PDE
+% LocalWords:  Timeline versioning revascularization PDE ata Oleg Soloviev
+% LocalWords:  sciencecodemanifesto Lederle
