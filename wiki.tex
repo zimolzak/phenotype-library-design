@@ -1,309 +1,104 @@
 \documentclass{tufte-handout}
-\usepackage{graphicx}
 \title{Design of a VA Phenotype Library}
-\author{Andy Zimolzak, MD, MMSc}
-\date{March, 2017}
+\author{Andrew Zimolzak, MD, MMSc}
+\date{March 27, 2017}
 
 \begin{document}
 
 \maketitle
 
-Motivation: VA data elements are not harmonized across stations.
-\emph{Phenotype} is the term we use for a set of harmonized data
-elements, or a higher-order concept made of many such ``building
-blocks.''\footnote{For example, 130 stations' ICD codes + labs $\to$
-  harmonized ICD + labs $\to$ diabetes + neuropathy $\to$ diabetic
-  neuropathy $\to$ which is a subset of diabetes with any
-  microvascular complication $\to$ subset of diabetes with any
-  complication at all, etc. Other terms: data cleaning, data
-  characterization, data integration, data modeling} Because 130
-stations are not incentivized to \ldots{}, % paste in here
-``data aggregation across the
-VHA is highly problematic, and data validity is often impossible to
-verify.''\footnote{Giroir BP, Wilensky GR, \emph{N Engl J Med}
-  373:1693--1695. PMID: 26422644}
+Motivation: VA data elements are not harmonized across stations. We
+have 130+ stations which are not incentivized to represent data in the
+same way.\footnote{``[D]ata aggregation across the VHA is highly
+  problematic, and data validity is often impossible to verify.''
+  \emph{N Engl J Med} 373:1693--1695} Ugly units in lab tests are not
+unique to VA, however.\footnote{Hemoglobin A1c units: ``\%, \%HB, \%
+  A1C, MG/DL, G/DL, NULL, Blank, U.'' \emph{Pharmacoepidemiol Drug
+    Saf.} 23(6):609--18.} \emph{Phenotype} is the term we use for a
+set of harmonized data elements, or a higher-order concept made of
+many such ``building blocks.'' When a subject matter expert (SME),
+analyst, statistician, and/or data pull engineer create a phenotype,
+the result can be: SQL code that represents the SME's rules, or a
+public database table that represents the enumerated list of
+included/excluded data items, or even a statistical model of the
+likelihood of a patient having the given phenotype.\footnote{Example
+  phenotypes, which happen to be from \emph{non-}MVP studies: Failed
+  first line platinum containing chemotherapy. Urgent coronary
+  revascularization (completed or attempted) because of unstable
+  angina. Erectile dysfunction, defined as first prescription for PDE5
+  inhibitor or referral for ED.}
 
-\section{Problems}
+\section{What we can't do today}
 
-Our 130+ stations %% paste in email text here.
+Ideally, a robust phenotype library should exist, serving several
+functions. (1) The library would make the products of each SME/data
+review process \emph{available for viewing} by study coordinators,
+either by searching, or by browsing an overview of all available
+phenotypes; and phenotype or adjudication data should be
+\emph{available for immediate use} by study analysts writing further
+analytic code. (2) The \emph{code} used in the process of deriving a
+phenotype should be preserved, as the validity of a study's
+conclusions rests in part on the adjudication code. (3) Phenotype and
+code \emph{metadata} (such as responsible SME and data extractors, and
+date of creation) should be clearly noted, to allow study staff to
+trust a phenotype, and to allow phenotyping core personnel to renew
+elements over time. (4) The library would \emph{document} the
+rationale for decisions made by SME, analyst, etc.\ and allow
+collaborative editing of this documentation. Documentation will
+typically be in sentences and paragraphs.\footnote{E.g.\ ``[S]hould
+  the ETL process be interrupted by any kind of database, host machine
+  or connection issue\ldots{}, in order to protect data and avoid
+  partial load the ETL will not re-execute itself and\ldots{}.'' Courtesy
+  of Oleg Soloviev.}
 
-\section{Our adjudication process}
-
-For a lab: Think up some search strings. Write query (SQL + SAS). Return
-sheet to SME for adjudication. Return to analyst. SIDs to database.
-Future: save code, documentation, and data, and metadata. We have a
-request for metadata in the database. Documentation can't live there
-feasibly. Code probably not either. Manually updating a revision
-history of a document is at best onerous---at worst unsustainable.
-
-\noindent \begin{tabular}{lll}
-\\
-\hline
-Work product & Current & Future\\
-\hline
-Code & Some in SharePoint & IBM Rational Team Concert or \ldots{}?\\
-Documentation & SharePoint & MediaWiki or \ldots{}?\\
-Ready-to-use adjudications & MS SQL Server\\
-Adjudication metadata & SharePoint & MS SQL Server?\\
-\hline
-\\
-\end{tabular}
-
-That's just labs. One of the simpler and more standardized ones. Even
-more complex phenotypes. Future: want to be national. Other CSP
-studies within Boston, albeit less informatics heavy. Other CSP
-studies nationally (other coordinating centers). Non-CSP research
-(each local VAMC). Non-research. DCP talks OK to MVP. MVP talks OK to
-BD-STEP. But those are relatively informal. Trying to do user
-contributed and comparison with OMOP. Slow going on both fronts is my
-impression. Maybe due to investment and trust in our own processes and
-lack of same in others'? Code sharing and trust.
-
-Example quote from documentation: ``[S]hould the ETL process be
-interrupted by any kind of database, host machine or connection
-issue\ldots{}, in order to protect data and avoid partial load the ETL
-will not re-execute itself and a warning message will be written into
-the log table on the next execution attempts, until the interrupted
-ETL process is manually checked and data integrity is confirmed.''
-
-%%% note: go get OMOP. Go get DIMLAB2. Get list of sta3ns?
-
-\section{Example phenotypes}
-
-%% table of fake sodium? fake a1c?
-
-Failed first line platinum containing chemotherapy. DCP often wanting
-to know ``where did this come from?'' Examples of DCP needs: urgent
-coronary revascularization (completed or attempted) because of
-unstable angina; hospitalization for acute congestive heart failure;
-erectile dysfunction, defined as first prescription for PDE5 inhibitor
-or referral for ED; doubling of serum creatinine from baseline; first
-use of a medication for diabetes. ``In cases where the outcome
-diagnosis is not clear based on the electronic adjudication, we will
-resort to manual adjudication\ldots{}. We will also manually adjudicate
-10\% of outcomes confirmed or refuted by our algorithms\ldots{}.''
-
-\noindent \begin{tabular}{llllllll}
-\\
-\hline
-LOINC & LabChemTestName & Sta3n & Topography & p1 & p50 & p99 & Count\\
-\hline
-Missing & SODIUM & 603 & SERUM & 126 & 140 & 149 & 115053\\
-Missing & RANDOM URINE SODIUM & 581 & URINE & 6 & 52 & 194.16 & 734\\
-Missing & SODIUM & 603 & URINE & 5 & 49.5 & 155.94 & 89\\
-2947-0 & SODIUM & 689 & SERUM & 133.25 & 140 & 144.75 & 126\\
-2947-0 & SODIUM & 621 & URINE,24HR & 13.804 & 150 & 877.72 & 98\\
-2950-4 & SODIUM & 689 & PERITONEAL & 124 & 132 & 138.84 & 10\\
-2950-4 & SODIUM*IA & 636 & BLOOD & 125 & 139 & 170.99 & 714\\
-\hline
-\\
-\end{tabular}
-
-%\begin{fullwidth}
-Table abbreviations: LOINC = logical observation identifiers names and
-codes (should be universal standard for identifying lab tests), Sta3n
-= station 3-number code (which of the 130 VistA instances contributed
-this lab test to the CDW), p1 = first percentile.
-%\end{fullwidth}
-
-
-\noindent \begin{tabular}{lllll}
-\\
-\hline
-LabChemTestName & Topography & Units & p50 & Count\\
-\hline
-Hgb A LC & Blood & \% & 97.7 & 2559\\
-Hgb & Drainage & g/dL & 2.1 & 110\\
-Hgb & Blood & \% & 12.4 & 1384861\\
-Hgb & Blood & g/dL & 13.1 & 1734588\\
-Glyco Hgb & Blood & \% & 8.2 & 767000\\
-Hgb & Plasma & gm/dl & 13.5 & 3522885\\
-Retic Hgb & Blood & pg & 31.7 & 9388\\
-1700 more rows\ldots{} & \ldots{} & \ldots{} & \ldots{} & \ldots{} \\
-\hline
-\\
-\end{tabular}
-
-%% Note there's more in the SIAM presentation.
-
-Very nice/ugly lab units variability from Mini-Sentinel has been
-published.\footnote{Raebel \emph{et al. Pharmacoepidemiol Drug Saf.}
-  2014 Jun;23(6):609--18.} Just a few examples of units observed in
-the data, for the hemoglobin A1c (glycosylated hemoglobin) test: \%,
-\%HB, \% A1C, MG/DL, G/DL, NULL, Blank, U.
-
-\section{What's in CDW Library---and misc.}
-
-Potassium, albumin, total cholesterol, etc. HSR-DATA Listserv is a
-resource. Virec is a resource. Lab notebook metaphor. Rocket or
-satellite metaphor.
-
-\section{Future}
-
-Nate's thing: active learning. List of popular phenotypes and their
-metadata. For the very most popular ones, counts, monthly perhaps?
-What data model? OMOP? Probabilistic or complex phenotype.
-
-\section{Why in the first place}
+\newpage
 
 The basic idea is that the methods of science should be documented
-well enough to be reproducible---in other words, ``show your work.''
-For our type of science, \emph{code is method.}\footnote{See also
-http://sciencecodemanifesto.org}
+well enough to be reproducible---in other words, ``show your
+work.''\footnote{``[O]ur policy now mandates that when code is central
+  to reaching a paper's conclusions, we require a statement describing
+  whether that code is available and setting out any restrictions on
+  accessibility.'' \emph{Nature} 514:536, 2014-10-30} For our type of
+science, \emph{code is method.}\footnote{sciencecodemanifesto.org} Lab
+notebook metaphor.\footnote{``Just as with biological materials, such
+  code should be made available alongside results obtained using
+  it\ldots{}. Because software support is far more burdensome than
+  delivery of materials such as plasmids, this code may be accompanied
+  by a disclaimer\ldots{}.'' \emph{Nature Methods} 11 (3): 211. March,
+  2014.}
 
-``key components of publications should be available to peers who wish
-to validate the techniques and results. A core element of many papers
-is the computer code used by authors in models, simulations and data
-analysis.\ldots{} Accordingly, our policy now mandates that when code
-is central to reaching a paper's conclusions, we require a statement
-describing whether that code is available and setting out any
-restrictions on accessibility.''\footnote{\emph{Nature} 514:536,
-  2014-10-30}
-
-``This often necessitates that code be written quickly with no
-expectation that it will be maintained or used by others in their
-experiments. But that code is still an integral part of the materials
-and methods. Just as with biological materials, such code should be
-made available alongside results obtained using it, with sufficient
-explanation as to be interpretable. This includes a minimally
-acceptable level of commenting in the code, a description of software
-dependencies, and basic installation and use instructions. Because
-software support is far more burdensome than delivery of materials
-such as plasmids, this code may be accompanied by a disclaimer that it
-is released only for reporting and archival
-purposes.''\footnote{\emph{Nature Methods} 11 (3): 211. March, 2014.}
+\section{Wish list}
 
 Going even further, When Frank Lederle \emph{et al.}\ publish the DCP
 results, will it be possible to run the whole analysis with one click?
-If not, why not?
+If not, \emph{why not?} Have a system that infers a SME's internal
+mental model,\footnote{E.g.\ ``serum sodium is where LabChemTestName
+  matches these 3 strings, or where LOINC is one of these 5 codes,
+  except in these 20 cases\ldots{}.''} from the SME answering
+``keep/discard'' to CDW elements, with only slight further effort from
+the SME. For the very most popular ones, counts, monthly perhaps?
+Phenotypes could be linked back to specific clauses in a given version
+of the research study protocol; amendments to parts of the protocol
+would trigger a need for amendments to adjudications.
 
-\begin{figure}
-\includegraphics[width=\linewidth]{dcp.png}
-\caption{Higher-order phenotype for DCP}
-\label{dcpgraph}
-\end{figure}
+The library should be available across VA nationally. The library
+would make phenotypes \emph{available for reuse}, for the purposes of
+other projects. Other CSP studies within Boston, albeit less
+informatics heavy. Other CSP studies nationally (other coordinating
+centers). Non-CSP research (each local VAMC). Non-research. DCP talks
+OK to MVP. MVP talks OK to BD-STEP. But those are relatively informal.
+Trying to do user contributed and comparison with OMOP. Slow going on
+both fronts is my impression. Maybe due to investment and trust in our
+own processes and lack of same in others'? Code sharing and trust.
 
-\vspace{4ex}
-
-
-\noindent \rule{\textwidth}{1pt}
-
-
-
-
-
-%%%%%%%% %%%%%%%% %%%%%%%% %%%%%%%% %%%%%%%% %%%%%%%% %%%%%%%% 
-
-
-
-
-
-\section{What I imagine for a phenotype library}
-
-When a subject matter expert (SME), analyst, statistician, and/or data
-pull engineer create a phenotype, the result can be: SQL code that
-represents the SME's rules, or a public database table that represents
-the enumerated list of included/excluded data items, or even a
-statistical model of the likelihood of a patient having the given
-phenotype. Ideally, a robust phenotype library should exist, serving
-several functions.
-
-(1) The library would make the products of each SME/data review
-process \emph{available for viewing} by study coordinators or others,
-with ``provenance'' (responsible SME and data extractor) clearly
-noted, to allow study staff to trust a given phenotype. It should also
-make it easy to browse an overview of all phenotypes without having to
-drill down into numerous different subfolders. (2) The library would
-make phenotypes \emph{available for reuse}, for the purposes of other
-projects. (3) The library would allow easy \emph{searches across
-  phenotypes,} to allow new studies to discover what already exists.
-Importantly, search should cover the contents of each document---not
-just titles. (4) The library would make phenotypes \emph{available for
-  renewal,} with their date of creation clearly noted, because data
-warehouse elements may change over time. (5) The library would
-\emph{document} the rationale for decisions made by SME, analyst,
-etc.\ and allow collaborative editing of this documentation. Ideally,
-changes would be audited/tracked. Possibly it should allow links among
-documents. (6) The library should be available across VA nationally.
-
-\section{Operationalizing the library}
-
-I think a wiki serves \emph{some} of these requirements well,
-especially search; and viewing provenance, documentation, and
-rationale.\footnote{A wiki is a Web application that allows people to
-  add, modify, or delete content in collaboration with others. Note
-  that functions 1, 3, and 5 involve human-readable English text.} But
-I'm not sure whether the current wiki is the best long-term solution.
-Note that SharePoint has a search feature, but it currently does not
-work at all.
-
-A wiki does \emph{not} serve some of the functions as
-well.\footnote{Specifically reusing, renewing, or modifying
-  phenotypes. These functions depend more on machine-readable items.}
-In my imagined ideal world, people would use Git or other source code
-management software to store SQL, SAS, etc.\ code. The main drawback
-is the learning curve, so I don't know whether this is actually going
-to happen. Storing code on the wiki is not the worst solution, even
-though it's nonstandard. I strongly believe that SQL code cut/pasted
-into an MS Word document will not be long-term viable, and the same
-goes for ``e-mail your code to one person who will be in charge of
-uploading/managing it.''
-
-\marginnote{\textbf{More about our current wiki:} It uses MediaWiki,
-  which is the software that makes Wikipedia run. MediaWiki uses its
-  own markup language and also provides a template system which helps
-  avoid a lot of copy-pasting of markup code, and a range of other
-  features. I'm more than happy to help with creating templates and
-  dealing with markup. The MediaWiki instance hosted for us by VINCI
-  is currently having authentication problems, however.}
-
-\section{Timeline and goals}
-
-\paragraph{Already built:}
-A database space within CDW to store lists of adjudicated elements. A
-SharePoint space for the phenomics core to store some documentation. A
-wiki system to store further documentation, allow for search, allow
-collaborative editing with easy versioning, and to help with
-SharePoint navigation. A very basic system to store source code (this
-system happens to be the wiki). Note that SharePoint has a wiki
-function too; also the SharePoint search function may be improved
-somewhat in summer, but I'm not sure to what extent.
-
-\paragraph{Very short term (1--2 months):}
-Decide on continuing with current wiki vs.\ SharePoint vs.\ a
-combination vs.\ some other solution. Organize the browsing function
-of the library to the specs of the phenomics core (Anne \& I discussed
-this in the past).
-
-\paragraph{Long term (1 year +):}
-Agree on---and possibly train on---a more robust source code control
-system (or failing that, design the library to do the best we can).
-Agree on best practices for elements needed to document a
-phenotype.\footnote{E.g.\ who built this, when, using what process,
-  for what chief purpose/study/intent, why did they make the choices
-  they made, etc.} Document at least one phenotype using these
-practices, to serve as an exemplar for others. Develop a system to
-advertise what is \emph{in the process of being built} (not just
-completed tasks).
-
-\paragraph{Even longer term:}
-Have a system that infers a SME's internal mental
-model,\footnote{E.g.\ ``serum sodium is where LabChemTestName matches
-  these 3 given text strings, where Topography matches these 2 given
-  strings, or where LOINC is one of these 5 given codes, except in
-  these 20 given cases which have probably erroneous LOINCs or
-  TestNames\ldots{}.''} from the SME answering ``keep/discard'' to CDW
-elements, with only slight further effort from the SME.\footnote{Nate
-  Fillmore (BD-STEP fellow) has some ideas about how to approach this,
-  e.g.\ a system that learns classification trees that the SME can
-  select/edit at a high level.}
-
-\section{Questions for the group}
-
-Do you agree with my list of requirements? Does a wiki fit the bill
-(see ``Very short term'' goals above)? Is the wiki the right place for
-SQL code? What training or further information on the wiki do you
-want? What should be captured about each phenotype?
+Personal note: Extremely hard to sync up with people. You're working
+on your thing, then you find out somebody else has been working
+simultaneously, not in the exact same direction, but in a similar one.
+It's an enormous proposition to brain dump from you to them and vice
+versa, and then to decide on a common direction. The sync up process
+can effectively halt all work at times, and both sides are likely to
+see that some of their work (sunk costs) does not get incorporated in
+the final product.
 
 \end{document}
 
@@ -313,6 +108,7 @@ want? What should be captured about each phenotype?
 % LocalWords:  wikicode microvascular SME's Operationalizing SIDs SAS VHA Engl
 %%  LocalWords:  SharePoint SharePoint's MAVIN DimLab phenomics LOINC Giroir dl
 %%  LocalWords:  LOINCs TestNames subfolders VINCI incentivized Wilensky lll HB
-% LocalWords:  CSP VAMC OMOP hould ETL llllllll lllll Hgb Glyco Retic Raebel
+% LocalWords:  CSP VAMC OMOP hould ETL llllllll lllll Hgb Glyco Retic Raebel ur
 % LocalWords:  Pharmacoepidemiol Saf glycosylated HSR Listserv Virec plasmids
-% LocalWords:  Timeline versioning revascularization PDE
+% LocalWords:  Timeline versioning revascularization PDE ata Oleg Soloviev
+% LocalWords:  sciencecodemanifesto Lederle
