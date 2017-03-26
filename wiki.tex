@@ -26,12 +26,18 @@ blocks.''\footnote{For example, 130 stations' ICD codes + labs $\to$
   harmonized ICD + labs $\to$ diabetes + neuropathy $\to$ diabetic
   neuropathy $\to$ which is a subset of diabetes with any
   microvascular complication $\to$ subset of diabetes with any
-  complication at all, etc. Other terms: data cleaning, data
-  characterization, data integration, data modeling} Because 130
-stations are not incentivized to \ldots{}, % paste in here
-``data aggregation across the
+  complication at all, etc. Failed first line platinum containing
+  chemotherapy. Urgent coronary revascularization (completed or
+  attempted) because of unstable angina; hospitalization for acute
+  congestive heart failure; erectile dysfunction, defined as first
+  prescription for PDE5 inhibitor or referral for ED; doubling of
+  serum creatinine from baseline; first use of a medication for
+  diabetes. Other terms: data cleaning, data characterization, data
+  integration, data modeling} Because 130 stations are not
+incentivized to \ldots{}, % paste in here
+\footnote{``data aggregation across the
 VHA is highly problematic, and data validity is often impossible to
-verify.''\footnote{Giroir BP, Wilensky GR, \emph{N Engl J Med}
+verify.'' Giroir BP, Wilensky GR, \emph{N Engl J Med}
   373:1693--1695. PMID: 26422644}
 
 \section{Problems}
@@ -45,35 +51,29 @@ Non-research. DCP talks OK to MVP. MVP talks OK to BD-STEP. But those
 are relatively informal. Trying to do user contributed and comparison
 with OMOP. Slow going on both fronts is my impression. Maybe due to
 investment and trust in our own processes and lack of same in others'?
-Code sharing and trust.
-
-Example quote from documentation: ``[S]hould the ETL process be
-interrupted by any kind of database, host machine or connection
-issue\ldots{}, in order to protect data and avoid partial load the ETL
-will not re-execute itself and a warning message will be written into
-the log table on the next execution attempts, until the interrupted
-ETL process is manually checked and data integrity is confirmed.''
+Code sharing and trust. \marginnote{Example quote from DCP
+  documentation: ``[S]hould the ETL process be interrupted by any kind
+  of database, host machine or connection issue\ldots{}, in order to
+  protect data and avoid partial load the ETL will not re-execute
+  itself and a warning message will be written into the log table on
+  the next execution attempts, until the interrupted ETL process is
+  manually checked and data integrity is confirmed.''}
 
 %%% note: go get OMOP. Go get DIMLAB2. Get list of sta3ns?
 
 \section{Example phenotypes}
 
-Failed first line platinum containing chemotherapy. DCP often wanting
-to know ``where did this come from?'' Examples of DCP needs: urgent
-coronary revascularization (completed or attempted) because of
-unstable angina; hospitalization for acute congestive heart failure;
-erectile dysfunction, defined as first prescription for PDE5 inhibitor
-or referral for ED; doubling of serum creatinine from baseline; first
-use of a medication for diabetes. ``In cases where the outcome
+DCP often wanting
+to know ``where did this come from?''  ``In cases where the outcome
 diagnosis is not clear based on the electronic adjudication, we will
 resort to manual adjudication\ldots{}. We will also manually adjudicate
 10\% of outcomes confirmed or refuted by our algorithms\ldots{}.''
 
 Very nice/ugly lab units variability from Mini-Sentinel has been
-published.\footnote{Raebel \emph{et al. Pharmacoepidemiol Drug Saf.}
-  2014 Jun;23(6):609--18.} Just a few examples of units observed in
-the data, for the hemoglobin A1c (glycosylated hemoglobin) test: \%,
-\%HB, \% A1C, MG/DL, G/DL, NULL, Blank, U.
+published.\footnote{Just a few examples of units observed in the data,
+  for the hemoglobin A1c (glycosylated hemoglobin) test: \%, \%HB, \%
+  A1C, MG/DL, G/DL, NULL, Blank, U. Raebel \emph{et al.
+    Pharmacoepidemiol Drug Saf.} 2014 Jun;23(6):609--18.}
 
 \section{What's in CDW Library---and misc.}
 
