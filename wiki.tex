@@ -1,5 +1,5 @@
 \documentclass{tufte-handout}
-\title{Design of a VA Phenotype Library}
+\title{What Records Should VA Keep About Phenotypes?}
 \author{Andrew Zimolzak, MD, MMSc}
 \date{March 27, 2017}
 
@@ -7,6 +7,7 @@
 
 \maketitle
 
+%% fixme
 Motivation: VA data elements are not harmonized across stations. We
 have 130+ stations which are not incentivized to represent data in the
 same way.\footnote{``[D]ata aggregation across the VHA is highly
@@ -20,13 +21,13 @@ many such ``building blocks.'' When a subject matter expert (SME),
 analyst, statistician, and/or data pull engineer create a phenotype,
 the result can be: SQL code that represents the SME's rules, or a
 public database table that represents the enumerated list of
-included/excluded data items, or even a statistical model of the
-likelihood of a patient having the given phenotype.\footnote{Example
-  phenotypes, which happen to be from \emph{non-}MVP studies: Failed
-  first line platinum containing chemotherapy. Urgent coronary
-  revascularization (completed or attempted) because of unstable
-  angina. Erectile dysfunction, defined as first prescription for PDE5
-  inhibitor or referral for ED.}
+included\slash excluded data items, or even a statistical model (in SAS or R
+or other code) of the likelihood of a patient having the given
+phenotype.\footnote{Example phenotypes, which happen to be from
+  \emph{non-}MVP studies: Failed first-line platinum-containing
+  chemotherapy. Urgent coronary revascularization (completed or
+  attempted) because of unstable angina. Erectile dysfunction, defined
+  as first prescription for PDE5 inhibitor or referral for ED.}
 
 \section{What we can't do today}
 
@@ -65,40 +66,41 @@ notebook metaphor.\footnote{``Just as with biological materials, such
   it\ldots{}. Because software support is far more burdensome than
   delivery of materials such as plasmids, this code may be accompanied
   by a disclaimer\ldots{}.'' \emph{Nature Methods} 11 (3): 211. March,
-  2014.}
+  2014.} %%fixme metaphor above.
 
-\section{Wish list}
+\section{Wish list (a.k.a.\ thinking big)}
 
-Going even further, When Frank Lederle \emph{et al.}\ publish the DCP
-results, will it be possible to run the whole analysis with one click?
-If not, \emph{why not?} Have a system that infers a SME's internal
-mental model,\footnote{E.g.\ ``serum sodium is where LabChemTestName
-  matches these 3 strings, or where LOINC is one of these 5 codes,
-  except in these 20 cases\ldots{}.''} from the SME answering
-``keep/discard'' to CDW elements, with only slight further effort from
-the SME. For the very most popular ones, counts, monthly perhaps?
+For adjudications, we could develop a system that infers\slash learns
+a SME's internal mental model,\footnote{E.g.\ ``serum sodium is where
+  LabChemTestName matches these 3 strings, or where LOINC is one of
+  these 5 codes, except in these 20 cases\ldots{}.''} from the SME
+answering ``keep\slash discard'' to database elements, with only
+slight further effort from the SME. For the very most popular
+phenotypes, we could display database counts, updated monthly perhaps.
 Phenotypes could be linked back to specific clauses in a given version
 of the research study protocol; amendments to parts of the protocol
-would trigger a need for amendments to adjudications.
+would trigger a need for amendments to adjudications. When study
+results are published, will it be possible to run the whole analysis
+with one click? If not, \emph{why not?}
 
 The library should be available across VA nationally. The library
 would make phenotypes \emph{available for reuse}, for the purposes of
-other projects. Other CSP studies within Boston, albeit less
-informatics heavy. Other CSP studies nationally (other coordinating
-centers). Non-CSP research (each local VAMC). Non-research. DCP talks
-OK to MVP. MVP talks OK to BD-STEP. But those are relatively informal.
-Trying to do user contributed and comparison with OMOP. Slow going on
-both fronts is my impression. Maybe due to investment and trust in our
-own processes and lack of same in others'? Code sharing and trust.
+other projects. Not only MVP, but VA Cooperative Studies Program (CSP)
+trials---in Boston and at the other coordinating centers---would
+benefit from simple, reusable phenotypes. Non-CSP research projects at
+single VA Medical Centers would benefit, as would non-research efforts
+(quality and business related).
 
-Personal note: Extremely hard to sync up with people. You're working
-on your thing, then you find out somebody else has been working
-simultaneously, not in the exact same direction, but in a similar one.
-It's an enormous proposition to brain dump from you to them and vice
-versa, and then to decide on a common direction. The sync up process
-can effectively halt all work at times, and both sides are likely to
-see that some of their work (sunk costs) does not get incorporated in
-the final product.
+Collaboration. DCP talks OK to MVP. MVP talks OK to BD-STEP. But those
+are relatively informal. Extremely hard to sync up with people beyond
+that. You're working on your thing, then you find out somebody else
+has been working simultaneously, not in the exact same direction, but
+in a similar one. It's an enormous proposition to brain dump from you
+to them and vice versa, and then to decide on a common direction. The
+sync up process can effectively halt all work at times, and both sides
+are likely to see that some of their work (sunk costs) does not get
+incorporated in the final product. Need to trust others' processes.
+Code sharing could help but not completely.
 
 \end{document}
 
