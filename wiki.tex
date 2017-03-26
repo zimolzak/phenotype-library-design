@@ -10,24 +10,18 @@
 It all starts with the research protocol! What should we capture and
 why? VA data elements are not harmonized across stations. We have 130+
 stations which are not incentivized to represent data in the same
-way.\footnote{``[D]ata aggregation across the VHA is highly problematic,
-  and data validity is often impossible to verify.'' Giroir BP,
-  Wilensky GR, \emph{N Engl J Med} 373:1693--1695. PMID: 26422644}
-Ugly units in lab tests are not unique to VA,
-however.\footnote{Examples for hemoglobin A1c lab: ``\%, \%HB, \% A1C,
-  MG/DL, G/DL, NULL, Blank, U.'' Raebel \emph{et al. Pharmacoepidemiol
-    Drug Saf.} 2014 Jun;23(6):609--18.} \emph{Phenotype} is the term
-we use for a set of harmonized data elements, or a higher-order
-concept made of many such ``building blocks.''\footnote{Other terms:
-  data cleaning, data characterization, data integration, data
-  modeling, data aggregation} DCP often wanting to know ``where did
+way.\footnote{``[D]ata aggregation across the VHA is highly
+  problematic, and data validity is often impossible to verify.''
+  \emph{N Engl J Med} 373:1693--1695} Ugly units in lab tests are not
+unique to VA, however.\footnote{Hemoglobin A1c units: ``\%, \%HB, \%
+  A1C, MG/DL, G/DL, NULL, Blank, U.'' \emph{Pharmacoepidemiol Drug
+    Saf.} 23(6):609--18.} \emph{Phenotype} is the term we use for a
+set of harmonized data elements, or a higher-order concept made of
+many such ``building blocks.'' DCP often wanting to know ``where did
 this come from?''\footnote{Failed first line platinum containing
   chemotherapy. Urgent coronary revascularization (completed or
-  attempted) because of unstable angina. Hospitalization for acute
-  congestive heart failure. Erectile dysfunction, defined as first
-  prescription for PDE5 inhibitor or referral for ED. Doubling of
-  serum creatinine from baseline. First use of a medication for
-  diabetes.}
+  attempted) because of unstable angina. Erectile dysfunction, defined
+  as first prescription for PDE5 inhibitor or referral for ED.}
 
 \section{List of wants}
 
@@ -61,10 +55,8 @@ Probabilistic or complex phenotype.
 
 Have a system that infers a SME's internal mental
 model,\footnote{E.g.\ ``serum sodium is where LabChemTestName matches
-  these 3 given text strings, where Topography matches these 2 given
-  strings, or where LOINC is one of these 5 given codes, except in
-  these 20 given cases which have probably erroneous LOINCs or
-  TestNames\ldots{}.''} from the SME answering ``keep/discard'' to CDW
+  these 3 strings, or where LOINC is one of these 5 codes, except in
+  these 20 cases\ldots{}.''} from the SME answering ``keep/discard'' to CDW
 elements, with only slight further effort from the SME.
 
 The basic idea is that the methods of science should be documented
