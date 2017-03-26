@@ -8,26 +8,31 @@
 \maketitle
 
 %% fixme
-Motivation: VA data elements are not harmonized across stations. We
-have 130+ stations which are not incentivized to represent data in the
-same way.\footnote{``[D]ata aggregation across the VHA is highly
+Like essentially all studies that rely heavily on the VA Corporate
+Data Warehouse, MVP must deal with the fact that VA data elements are
+incompletely harmonized across the 130+ VA Medical Centers or
+``stations,''\footnote{``[D]ata aggregation across the VHA is highly
   problematic, and data validity is often impossible to verify.''
-  \emph{N Engl J Med} 373:1693--1695} Ugly units in lab tests are not
-unique to VA, however.\footnote{Hemoglobin A1c units: ``\%, \%HB, \%
-  A1C, MG/DL, G/DL, NULL, Blank, U.'' \emph{Pharmacoepidemiol Drug
-    Saf.} 23(6):609--18.} \emph{Phenotype} is the term we use for a
-set of harmonized data elements, or a higher-order concept made of
-many such ``building blocks.'' When a subject matter expert (SME),
-analyst, statistician, and/or data pull engineer create a phenotype,
-the result can be: SQL code that represents the SME's rules, or a
-public database table that represents the enumerated list of
-included\slash excluded data items, or even a statistical model (in SAS or R
-or other code) of the likelihood of a patient having the given
-phenotype.\footnote{Example phenotypes, which happen to be from
-  \emph{non-}MVP studies: Failed first-line platinum-containing
-  chemotherapy. Urgent coronary revascularization (completed or
-  attempted) because of unstable angina. Erectile dysfunction, defined
-  as first prescription for PDE5 inhibitor or referral for ED.}
+  \emph{N Engl J Med} 373:1693--1695} although messy data is certainly
+not unique to VA.\footnote{Example hemoglobin A1c units: ``\%, \%HB,
+  \% A1C, MG/DL, G/DL, NULL, Blank, U.'' \emph{Pharmacoepidemiol Drug
+    Saf.} 23(6):609--18.} Even when stations are forced to use the
+same coding system nationwide (e.g.\ ICD diagnosis codes), we must
+perform further work to determine the reliability of any combination
+of data elements. \emph{Phenotype} is the term we use for a set of
+harmonized data elements, or a higher-order concept made of many such
+``building blocks.'' When a subject matter expert (SME), analyst,
+statistician, and/or data pull engineer create a phenotype, the result
+can be: SQL code that represents the SME's rules, a public database
+table that represents the enumerated list of included\slash excluded
+data items, or even a statistical model (in SAS or R or other code) of
+the likelihood of a patient having the given
+phenotype.\footnote{Example phenotypes, which happen to be
+  requirements from \emph{non-}MVP studies: Failed first-line
+  platinum-containing chemotherapy. Urgent coronary revascularization
+  (completed or attempted) because of unstable angina. Erectile
+  dysfunction, defined as first prescription for PDE5 inhibitor or
+  referral for ED.}
 
 \section{What we can't do today}
 
@@ -35,11 +40,11 @@ Ideally, a robust phenotype library should exist, serving several
 functions. (1) The library would make the products of each SME/data
 review process \emph{available for viewing} by study coordinators,
 either by searching, or by browsing an overview of all available
-phenotypes; and phenotype or adjudication data should be
+phenotypes; and these products should be
 \emph{available for immediate use} by study analysts writing further
 analytic code. (2) The \emph{code} used in the process of deriving a
-phenotype should be preserved, as the validity of a study's
-conclusions rests in part on the adjudication code. (3) Phenotype and
+phenotype should be preserved, in part because the scientific validity of a study's
+conclusions rests in part on the phenotype code. (3) Phenotype and
 code \emph{metadata} (such as responsible SME and data extractors, and
 date of creation) should be clearly noted, to allow study staff to
 trust a phenotype, and to allow phenotyping core personnel to renew
@@ -54,34 +59,41 @@ typically be in sentences and paragraphs.\footnote{E.g.\ ``[S]hould
 
 \newpage
 
-The basic idea is that the methods of science should be documented
-well enough to be reproducible---in other words, ``show your
-work.''\footnote{``[O]ur policy now mandates that when code is central
-  to reaching a paper's conclusions, we require a statement describing
-  whether that code is available and setting out any restrictions on
-  accessibility.'' \emph{Nature} 514:536, 2014-10-30} For our type of
-science, \emph{code is method.}\footnote{sciencecodemanifesto.org} Lab
-notebook metaphor.\footnote{``Just as with biological materials, such
-  code should be made available alongside results obtained using
-  it\ldots{}. Because software support is far more burdensome than
-  delivery of materials such as plasmids, this code may be accompanied
-  by a disclaimer\ldots{}.'' \emph{Nature Methods} 11 (3): 211. March,
-  2014.} %%fixme metaphor above.
+A central idea of functions (1)--(4) above is that the methods of
+science should be available and documented well enough to be
+reproducible---in other words, ``show your work.''\footnote{``[O]ur
+  policy now mandates that when code is central to reaching a paper's
+  conclusions, we require a statement describing whether that code is
+  available and setting out any restrictions on accessibility.''
+  \emph{Nature} 514:536, 2014-10-30} For our type of science,
+\emph{code is method.}\footnote{sciencecodemanifesto.org} 
 
 \section{Wish list (a.k.a.\ thinking big)}
 
-For adjudications, we could develop a system that infers\slash learns
-a SME's internal mental model,\footnote{E.g.\ ``serum sodium is where
-  LabChemTestName matches these 3 strings, or where LOINC is one of
-  these 5 codes, except in these 20 cases\ldots{}.''} from the SME
-answering ``keep\slash discard'' to database elements, with only
-slight further effort from the SME. For the very most popular
-phenotypes, we could display database counts, updated monthly perhaps.
-Phenotypes could be linked back to specific clauses in a given version
-of the research study protocol; amendments to parts of the protocol
-would trigger a need for amendments to adjudications. When study
-results are published, will it be possible to run the whole analysis
-with one click? If not, \emph{why not?}
+I personally imagine keeping track of all analyses run on the dataset,
+starting even at the early exploratory stage. I would imagine the same
+record-keeping attitude that one might have toward a laboratory
+notebook in a basic bioscience lab, or toward a patent
+book.\footnote{``Just as with biological materials, such code should
+  be made available alongside results obtained using it\ldots{}.
+  Because software support is far more burdensome than delivery of
+  materials such as plasmids, this code may be accompanied by a
+  disclaimer\ldots{}.'' \emph{Nature Methods} 11 (3): 211. March,
+  2014.} %%fixme metaphor above.
+
+For some adjudications that SMEs perform (e.g.\ laboratory), we could
+develop a system that infers\slash learns a SME's internal mental
+model,\footnote{E.g.\ ``serum sodium is where LabChemTestName matches
+  these 3 strings, or where LOINC is one of these 5 codes, except in
+  these 20 cases\ldots{}.''} from the SME answering ``keep\slash
+discard'' to database elements, with only slight further effort from
+the SME. For the very most popular phenotypes, we could display
+database counts, updated monthly perhaps. Phenotypes could be linked
+back to specific clauses in a given version of the research study
+protocol; any amendment to a critical part of the protocol would
+trigger a need for an amendment to the corresponding data process.
+When study results are published, will it be possible to run the whole
+analysis with one click? If not, \emph{why not?}
 
 The library should be available across VA nationally. The library
 would make phenotypes \emph{available for reuse}, for the purposes of
