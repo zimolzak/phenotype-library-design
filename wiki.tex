@@ -19,15 +19,14 @@ not unique to VA.\footnote{Example hemoglobin A1c units: ``\%, \%HB,
 same coding system nationwide (e.g.\ ICD diagnosis codes), we must
 perform further work to determine the reliability of any combination
 of data elements. \emph{Phenotype} is the term we use for a set of
-harmonized data elements, or for a higher-order concept made of many such
-``building blocks.'' When a subject matter expert (SME), analyst,
+harmonized data elements, or for a higher-order concept made of many
+such ``building blocks.'' When a subject matter expert (SME), analyst,
 statistician, and/or data pull engineer create a phenotype, the result
 can be: SQL code that represents the SME's rules, a public database
 table that represents the enumerated list of included\slash excluded
 data items, or even a statistical model (comprising SAS or R or other
-code, plus coefficients) of
-the likelihood of a patient having the given
-phenotype.\footnote{Example phenotypes, which happen to be
+code, plus coefficients) of the likelihood of a patient having the
+given phenotype.\footnote{Example phenotypes, which happen to be
   requirements from \emph{non-}MVP studies: Failed first-line
   platinum-containing chemotherapy. Urgent coronary revascularization
   (completed or attempted) because of unstable angina. Erectile
@@ -41,26 +40,25 @@ functions. I am deliberately steering clear of discussing \emph{how}
 to serve each function and would rather leave that discussion for the
 group.
 
-(1) The library should make the products of each SME/data
-review process \emph{available for viewing} by study coordinators,
-either by searching, or by browsing an overview of all available
-phenotypes; and these products should be
-\emph{available for immediate use} by study analysts writing further
-analytic code. (2) The \emph{code} used in the process of deriving a
-phenotype should be preserved, in part because the scientific validity of a study's
-conclusions rests in part on the phenotype code. (3) Phenotype and
-code \emph{metadata} (such as responsible SME and data extractors, and
-date of creation) should be clearly noted, to allow study staff to
-trust a phenotype, and to allow phenotyping core personnel to renew
-elements over time. (4) The library should \emph{document} the
-rationale for decisions made by SME, analyst, etc., and the
-functioning of code, and it should allow
+(1) The library should make the products of each SME/data review
+process \emph{available for viewing} by study coordinators, either by
+searching, or by browsing an overview of all available phenotypes; and
+these products should be \emph{available for immediate use} by study
+analysts writing further analytic code. (2) The \emph{code} used in
+the process of deriving a phenotype should be preserved, in part
+because the scientific validity of a study's conclusions rests in part
+on the phenotype code. (3) Phenotype and code \emph{metadata} (such as
+responsible SME and data extractors, and date of creation) should be
+clearly noted, to allow study staff to trust a phenotype, and to allow
+phenotyping core personnel to renew elements over time. (4) The
+library should \emph{document} the rationale for decisions made by
+SME, analyst, etc., and the functioning of code, and it should allow
 collaborative editing of this documentation. Documentation will
 typically be in sentences and paragraphs.\footnote{E.g.\ ``[S]hould
   the ETL process be interrupted by any kind of database, host machine
   or connection issue\ldots{}, in order to protect data and avoid
-  partial load the ETL will not re-execute itself and\ldots{}.'' Courtesy
-  of Oleg Soloviev.}
+  partial load the ETL will not re-execute itself and\ldots{}.''
+  Courtesy of Oleg Soloviev.}
 
 \newpage
 
@@ -71,7 +69,7 @@ reproducible---in other words, ``show your work.''\footnote{``[O]ur
   conclusions, we require a statement describing whether that code is
   available and setting out any restrictions on accessibility.''
   \emph{Nature} 514:536, 2014-10-30} Often for our type of science,
-\emph{code is method.}\footnote{sciencecodemanifesto.org} 
+\emph{code is method.}\footnote{sciencecodemanifesto.org}
 
 \section{Wish list (a.k.a.\ thinking big)}
 
@@ -90,15 +88,15 @@ the protocol would trigger a need for an amendment to the
 corresponding data process.
 
 \paragraph{Scientific:}
-I personally imagine keeping track of all analyses run on the data set,
-starting even at the early exploratory stage of phenotyping. I would
-imagine the same record-keeping attitude that one might have toward a
-laboratory notebook in a basic bioscience lab, or toward a patent
-book.\footnote{``Just as with biological materials, such code should
-  be made available alongside results obtained using it\ldots{}.
-  Because software support is far more burdensome than delivery of
-  materials such as plasmids, this code may be accompanied by a
-  disclaimer\ldots{}.'' \emph{Nature Methods} 11 (3): 211. March,
+I personally imagine keeping track of all analyses run on the data
+set, starting even at the early exploratory stage of phenotyping. I
+would imagine the same record-keeping attitude that one might have
+toward a laboratory notebook in a basic bioscience lab, or toward a
+patent book.\footnote{``Just as with biological materials, such code
+  should be made available alongside results obtained using
+  it\ldots{}. Because software support is far more burdensome than
+  delivery of materials such as plasmids, this code may be accompanied
+  by a disclaimer\ldots{}.'' \emph{Nature Methods} 11 (3): 211. March,
   2014.} When study results are published, will it be possible to run
 the whole analysis with one click (at least within VA, where the data
 resides)? If not, \emph{why not?}
@@ -107,10 +105,11 @@ resides)? If not, \emph{why not?}
 VA would benefit greatly if the library were available across VA
 nationally: if it made phenotypes \emph{available for reuse}, for the
 purposes of other projects. Phenotyping is performed very commonly not
-only for MVP studies, but for large VA Cooperative Studies Program (CSP)
-trials---coordinated in Boston and at the other centers. Furthermore,
-smaller, non-CSP research projects at single VA Medical Centers would
-benefit, as would non-research efforts (quality and business related).
+only for MVP studies, but for large VA Cooperative Studies Program
+(CSP) trials---coordinated in Boston and at the other centers.
+Furthermore, smaller, non-CSP research projects at single VA Medical
+Centers would benefit, as would non-research efforts (quality and
+business related).
 
 From my personal perspective, MVP communicates well about phenotyping
 with certain CSP and other studies based in Boston. Those
