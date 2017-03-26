@@ -8,63 +8,36 @@
 \maketitle
 
 It all starts with the research protocol! What should we capture and
-why?
-
-\section{Problems}
-
-Motivation: VA data elements are not harmonized across stations. We
-have 130+ stations. \emph{Phenotype} is the term we use for a set of
-harmonized data elements, or a higher-order concept made of many such
-``building blocks.''\footnote{For example, 130 stations' ICD codes +
-  labs $\to$ harmonized ICD + labs $\to$ diabetes + neuropathy $\to$
-  diabetic neuropathy $\to$ which is a subset of diabetes with any
-  microvascular complication $\to$ subset of diabetes with any
-  complication at all, etc. Failed first line platinum containing
+why? VA data elements are not harmonized across stations. We have 130+
+stations which are not incentivized to represent data in the same
+way.\footnote{``[D]ata aggregation across the VHA is highly problematic,
+  and data validity is often impossible to verify.'' Giroir BP,
+  Wilensky GR, \emph{N Engl J Med} 373:1693--1695. PMID: 26422644}
+Ugly units in lab tests are not unique to VA,
+however.\footnote{Examples for hemoglobin A1c lab: ``\%, \%HB, \% A1C,
+  MG/DL, G/DL, NULL, Blank, U.'' Raebel \emph{et al. Pharmacoepidemiol
+    Drug Saf.} 2014 Jun;23(6):609--18.} \emph{Phenotype} is the term
+we use for a set of harmonized data elements, or a higher-order
+concept made of many such ``building blocks.''\footnote{Other terms:
+  data cleaning, data characterization, data integration, data
+  modeling, data aggregation} DCP often wanting to know ``where did
+this come from?''\footnote{Failed first line platinum containing
   chemotherapy. Urgent coronary revascularization (completed or
-  attempted) because of unstable angina; hospitalization for acute
-  congestive heart failure; erectile dysfunction, defined as first
-  prescription for PDE5 inhibitor or referral for ED; doubling of
-  serum creatinine from baseline; first use of a medication for
-  diabetes. Other terms: data cleaning, data characterization, data
-  integration, data modeling} Because 130 stations are not
-incentivized to \ldots{}, % paste in here
-\footnote{``data aggregation across the
-VHA is highly problematic, and data validity is often impossible to
-verify.'' Giroir BP, Wilensky GR, \emph{N Engl J Med}
-  373:1693--1695. PMID: 26422644}
-
-DCP often wanting
-to know ``where did this come from?''  ``In cases where the outcome
-diagnosis is not clear based on the electronic adjudication, we will
-resort to manual adjudication\ldots{}. We will also manually adjudicate
-10\% of outcomes confirmed or refuted by our algorithms\ldots{}.''
-
-Very nice/ugly lab units variability from Mini-Sentinel has been
-published.\footnote{Just a few examples of units observed in the data,
-  for the hemoglobin A1c (glycosylated hemoglobin) test: \%, \%HB, \%
-  A1C, MG/DL, G/DL, NULL, Blank, U. Raebel \emph{et al.
-    Pharmacoepidemiol Drug Saf.} 2014 Jun;23(6):609--18.}
-
-Extremely hard to sync up with people. You're working on your thing,
-then you find out somebody else has been working simultaneously, not
-in the exact same direction, but in a similar one. It's an enormous
-proposition to brain dump from you to them and vice versa, and then to
-decide on a common direction. The sync up process can effectively halt
-all work at times, and both sides are likely to see that some of their
-work (sunk costs) does not get incorporated in the final product.
-
-
+  attempted) because of unstable angina. Hospitalization for acute
+  congestive heart failure. Erectile dysfunction, defined as first
+  prescription for PDE5 inhibitor or referral for ED. Doubling of
+  serum creatinine from baseline. First use of a medication for
+  diabetes.}
 
 \section{List of wants}
 
 Code versus documentation versus data versus
-metadata.\footnote{Example quote from DCP documentation: ``[S]hould
-  the ETL process be interrupted by any kind of database, host machine
-  or connection issue\ldots{}, in order to protect data and avoid
-  partial load the ETL will not re-execute itself and a warning
-  message will be written into the log table on the next execution
-  attempts, until the interrupted ETL process is manually checked and
-  data integrity is confirmed.''}
+metadata.\footnote{Example DCP documentation: ``[S]hould the ETL
+  process be interrupted by any kind of database, host machine or
+  connection issue\ldots{}, in order to protect data and avoid partial
+  load the ETL will not re-execute itself and a warning message will
+  be written into the log table on the next execution
+  attempts\ldots{}.''}
 
 Future: want to be national. Other CSP studies within Boston, albeit
 less informatics heavy. Other CSP studies nationally (other
@@ -75,11 +48,10 @@ with OMOP. Slow going on both fronts is my impression. Maybe due to
 investment and trust in our own processes and lack of same in others'?
 Code sharing and trust.\footnote{``Just as with biological materials,
   such code should be made available alongside results obtained using
-  it, with sufficient explanation as to be interpretable\ldots{}.
-  Because software support is far more burdensome than delivery of
-  materials such as plasmids, this code may be accompanied by a
-  disclaimer that it is released only for reporting and archival
-  purposes.'' \emph{Nature Methods} 11 (3): 211. March, 2014.}
+  it\ldots{}. Because software support is far more burdensome than
+  delivery of materials such as plasmids, this code may be accompanied
+  by a disclaimer\ldots{}.'' \emph{Nature Methods} 11 (3): 211. March,
+  2014.}
 
 %%% note: go get OMOP. Go get DIMLAB2. Get list of sta3ns?
 
@@ -132,6 +104,17 @@ warehouse elements may change over time. (5) The library would
 etc.\ and allow collaborative editing of this documentation. Ideally,
 changes would be audited/tracked. Possibly it should allow links among
 documents. (6) The library should be available across VA nationally.
+
+\section{Personal note}
+
+Extremely hard to sync up with people. You're working on your thing,
+then you find out somebody else has been working simultaneously, not
+in the exact same direction, but in a similar one. It's an enormous
+proposition to brain dump from you to them and vice versa, and then to
+decide on a common direction. The sync up process can effectively halt
+all work at times, and both sides are likely to see that some of their
+work (sunk costs) does not get incorporated in the final product.
+
 
 \end{document}
 
