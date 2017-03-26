@@ -7,24 +7,17 @@
 
 \maketitle
 
-It all starts with the research protocol!
+It all starts with the research protocol! What should we capture and
+why?
 
-What should we capture and why?
+\section{Problems}
 
-Extremely hard to sync up with people. You're working on your thing,
-then you find out somebody else has been working simultaneously, not
-in the exact same direction, but in a similar one. It's an enormous
-proposition to brain dump from you to them and vice versa, and then to
-decide on a common direction. The sync up process can effectively halt
-all work at times, and both sides are likely to see that some of their
-work (sunk costs) does not get incorporated in the final product.
-
-Motivation: VA data elements are not harmonized across stations.
-\emph{Phenotype} is the term we use for a set of harmonized data
-elements, or a higher-order concept made of many such ``building
-blocks.''\footnote{For example, 130 stations' ICD codes + labs $\to$
-  harmonized ICD + labs $\to$ diabetes + neuropathy $\to$ diabetic
-  neuropathy $\to$ which is a subset of diabetes with any
+Motivation: VA data elements are not harmonized across stations. We
+have 130+ stations. \emph{Phenotype} is the term we use for a set of
+harmonized data elements, or a higher-order concept made of many such
+``building blocks.''\footnote{For example, 130 stations' ICD codes +
+  labs $\to$ harmonized ICD + labs $\to$ diabetes + neuropathy $\to$
+  diabetic neuropathy $\to$ which is a subset of diabetes with any
   microvascular complication $\to$ subset of diabetes with any
   complication at all, etc. Failed first line platinum containing
   chemotherapy. Urgent coronary revascularization (completed or
@@ -40,29 +33,6 @@ VHA is highly problematic, and data validity is often impossible to
 verify.'' Giroir BP, Wilensky GR, \emph{N Engl J Med}
   373:1693--1695. PMID: 26422644}
 
-\section{Problems}
-
-Our 130+ stations %% paste in email text here.
-
-Future: want to be national. Other CSP studies within Boston, albeit
-less informatics heavy. Other CSP studies nationally (other
-coordinating centers). Non-CSP research (each local VAMC).
-Non-research. DCP talks OK to MVP. MVP talks OK to BD-STEP. But those
-are relatively informal. Trying to do user contributed and comparison
-with OMOP. Slow going on both fronts is my impression. Maybe due to
-investment and trust in our own processes and lack of same in others'?
-Code sharing and trust. \marginnote{Example quote from DCP
-  documentation: ``[S]hould the ETL process be interrupted by any kind
-  of database, host machine or connection issue\ldots{}, in order to
-  protect data and avoid partial load the ETL will not re-execute
-  itself and a warning message will be written into the log table on
-  the next execution attempts, until the interrupted ETL process is
-  manually checked and data integrity is confirmed.''}
-
-%%% note: go get OMOP. Go get DIMLAB2. Get list of sta3ns?
-
-\section{Example phenotypes}
-
 DCP often wanting
 to know ``where did this come from?''  ``In cases where the outcome
 diagnosis is not clear based on the electronic adjudication, we will
@@ -75,15 +45,41 @@ published.\footnote{Just a few examples of units observed in the data,
   A1C, MG/DL, G/DL, NULL, Blank, U. Raebel \emph{et al.
     Pharmacoepidemiol Drug Saf.} 2014 Jun;23(6):609--18.}
 
-\section{What's in CDW Library---and misc.}
+Extremely hard to sync up with people. You're working on your thing,
+then you find out somebody else has been working simultaneously, not
+in the exact same direction, but in a similar one. It's an enormous
+proposition to brain dump from you to them and vice versa, and then to
+decide on a common direction. The sync up process can effectively halt
+all work at times, and both sides are likely to see that some of their
+work (sunk costs) does not get incorporated in the final product.
 
-Potassium, albumin, total cholesterol, etc. HSR-DATA Listserv is a
-resource. Virec is a resource. Lab notebook metaphor. Rocket or
-satellite metaphor.
 
-Nate's thing: active learning. List of popular phenotypes and their
-metadata. For the very most popular ones, counts, monthly perhaps?
-What data model? OMOP? Probabilistic or complex phenotype.
+
+\section{List of wants}
+
+Code versus documentation versus data versus
+metadata.\footnote{Example quote from DCP documentation: ``[S]hould
+  the ETL process be interrupted by any kind of database, host machine
+  or connection issue\ldots{}, in order to protect data and avoid
+  partial load the ETL will not re-execute itself and a warning
+  message will be written into the log table on the next execution
+  attempts, until the interrupted ETL process is manually checked and
+  data integrity is confirmed.''}
+
+Future: want to be national. Other CSP studies within Boston, albeit
+less informatics heavy. Other CSP studies nationally (other
+coordinating centers). Non-CSP research (each local VAMC).
+Non-research. DCP talks OK to MVP. MVP talks OK to BD-STEP. But those
+are relatively informal. Trying to do user contributed and comparison
+with OMOP. Slow going on both fronts is my impression. Maybe due to
+investment and trust in our own processes and lack of same in others'?
+Code sharing and trust. 
+
+%%% note: go get OMOP. Go get DIMLAB2. Get list of sta3ns?
+
+List of popular phenotypes and their metadata. For the very most
+popular ones, counts, monthly perhaps? What data model? OMOP?
+Probabilistic or complex phenotype.
 
 Have a system that infers a SME's internal mental
 model,\footnote{E.g.\ ``serum sodium is where LabChemTestName matches
@@ -91,15 +87,13 @@ model,\footnote{E.g.\ ``serum sodium is where LabChemTestName matches
   strings, or where LOINC is one of these 5 given codes, except in
   these 20 given cases which have probably erroneous LOINCs or
   TestNames\ldots{}.''} from the SME answering ``keep/discard'' to CDW
-elements, with only slight further effort from the SME.\footnote{Nate
-  Fillmore (BD-STEP fellow) has some ideas about how to approach this,
-  e.g.\ a system that learns classification trees that the SME can
-  select/edit at a high level.}
+elements, with only slight further effort from the SME.
 
 The basic idea is that the methods of science should be documented
 well enough to be reproducible---in other words, ``show your work.''
 For our type of science, \emph{code is method.}\footnote{See also
-http://sciencecodemanifesto.org}
+http://sciencecodemanifesto.org} Lab notebook metaphor. Rocket or
+satellite metaphor.
 
 \marginnote{``[O]ur policy now mandates that when code is central to
   reaching a paper's conclusions, we require a statement describing
@@ -117,8 +111,6 @@ If not, why not?
   this code may be accompanied by a disclaimer that it is released
   only for reporting and archival purposes.'' \emph{Nature Methods} 11
   (3): 211. March, 2014.}
-
-\section{What I imagine for a phenotype library}
 
 When a subject matter expert (SME), analyst, statistician, and/or data
 pull engineer create a phenotype, the result can be: SQL code that
@@ -145,8 +137,6 @@ warehouse elements may change over time. (5) The library would
 etc.\ and allow collaborative editing of this documentation. Ideally,
 changes would be audited/tracked. Possibly it should allow links among
 documents. (6) The library should be available across VA nationally.
-
-
 
 \end{document}
 
