@@ -7,7 +7,6 @@
 
 \maketitle
 
-%% fixme
 Like essentially all VA studies that rely heavily on the Corporate
 Data Warehouse, MVP must deal with the fact that data elements are
 incompletely harmonized across the 130+ VA Medical Centers or
@@ -25,7 +24,8 @@ harmonized data elements, or for a higher-order concept made of many such
 statistician, and/or data pull engineer create a phenotype, the result
 can be: SQL code that represents the SME's rules, a public database
 table that represents the enumerated list of included\slash excluded
-data items, or even a statistical model (in SAS or R or other code) of
+data items, or even a statistical model (comprising SAS or R or other
+code, plus coefficients) of
 the likelihood of a patient having the given
 phenotype.\footnote{Example phenotypes, which happen to be
   requirements from \emph{non-}MVP studies: Failed first-line
@@ -41,7 +41,7 @@ functions. I am deliberately steering clear of discussing \emph{how}
 to serve each function and would rather leave that discussion for the
 group.
 
-(1) The library would make the products of each SME/data
+(1) The library should make the products of each SME/data
 review process \emph{available for viewing} by study coordinators,
 either by searching, or by browsing an overview of all available
 phenotypes; and these products should be
@@ -52,8 +52,9 @@ conclusions rests in part on the phenotype code. (3) Phenotype and
 code \emph{metadata} (such as responsible SME and data extractors, and
 date of creation) should be clearly noted, to allow study staff to
 trust a phenotype, and to allow phenotyping core personnel to renew
-elements over time. (4) The library would \emph{document} the
-rationale for decisions made by SME, analyst, etc.\ and allow
+elements over time. (4) The library should \emph{document} the
+rationale for decisions made by SME, analyst, etc., and the
+functioning of code, and it should allow
 collaborative editing of this documentation. Documentation will
 typically be in sentences and paragraphs.\footnote{E.g.\ ``[S]hould
   the ETL process be interrupted by any kind of database, host machine
@@ -69,7 +70,7 @@ reproducible---in other words, ``show your work.''\footnote{``[O]ur
   policy now mandates that when code is central to reaching a paper's
   conclusions, we require a statement describing whether that code is
   available and setting out any restrictions on accessibility.''
-  \emph{Nature} 514:536, 2014-10-30} For our type of science,
+  \emph{Nature} 514:536, 2014-10-30} Often for our type of science,
 \emph{code is method.}\footnote{sciencecodemanifesto.org} 
 
 \section{Wish list (a.k.a.\ thinking big)}
@@ -81,17 +82,18 @@ model,\footnote{E.g.\ ``serum sodium is where LabChemTestName matches
   these 3 strings, or where LOINC is one of these 5 codes, except in
   these 20 cases\ldots{}.''} from the SME answering ``keep\slash
 discard'' to database elements, with only slight further effort from
-the SME. For the very most popular phenotypes, we could display
-database counts, updated monthly perhaps. Phenotypes could be linked
-back to specific clauses in a given version of the research study
-protocol; any amendment to a critical part of the protocol would
-trigger a need for an amendment to the corresponding data process.
+the SME. For the very most popular phenotypes, we could advertise
+database counts to study coordinators, updated monthly perhaps.
+Phenotypes could be linked back to specific clauses in a given version
+of the research study protocol; any amendment to a critical part of
+the protocol would trigger a need for an amendment to the
+corresponding data process.
 
 \paragraph{Scientific:}
-I personally imagine keeping track of all analyses run on the dataset,
-starting even at the early exploratory stage. I would imagine the same
-record-keeping attitude that one might have toward a laboratory
-notebook in a basic bioscience lab, or toward a patent
+I personally imagine keeping track of all analyses run on the data set,
+starting even at the early exploratory stage of phenotyping. I would
+imagine the same record-keeping attitude that one might have toward a
+laboratory notebook in a basic bioscience lab, or toward a patent
 book.\footnote{``Just as with biological materials, such code should
   be made available alongside results obtained using it\ldots{}.
   Because software support is far more burdensome than delivery of
@@ -105,8 +107,8 @@ resides)? If not, \emph{why not?}
 VA would benefit greatly if the library were available across VA
 nationally: if it made phenotypes \emph{available for reuse}, for the
 purposes of other projects. Phenotyping is performed very commonly not
-only for MVP studies, but for VA Cooperative Studies Program (CSP)
-trials---in Boston and at the other coordinating centers. Furthermore,
+only for MVP studies, but for large VA Cooperative Studies Program (CSP)
+trials---coordinated in Boston and at the other centers. Furthermore,
 smaller, non-CSP research projects at single VA Medical Centers would
 benefit, as would non-research efforts (quality and business related).
 
@@ -132,5 +134,5 @@ the final product.
 %%  LocalWords:  LOINCs TestNames subfolders VINCI incentivized Wilensky lll HB
 % LocalWords:  CSP VAMC OMOP hould ETL llllllll lllll Hgb Glyco Retic Raebel ur
 % LocalWords:  Pharmacoepidemiol Saf glycosylated HSR Listserv Virec plasmids
-% LocalWords:  Timeline versioning revascularization PDE ata Oleg Soloviev
-% LocalWords:  sciencecodemanifesto Lederle
+% LocalWords:  Timeline versioning revascularization PDE ata Oleg Soloviev SMEs
+% LocalWords:  sciencecodemanifesto Lederle bioscience
