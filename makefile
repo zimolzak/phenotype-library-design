@@ -1,7 +1,16 @@
-all : images pdfs
+pdfs = wiki.pdf design-2017-02-08.pdf recap_app8_2014.pdf
+pngs = dcp.png
 
-images :
-	dot -Tpng -odcp.png dcp.dot
+.PHONY: all clean
 
-pdfs :
-	pdflatex wiki.tex
+all: $(pngs) $(pdfs)
+
+%.png: %.dot
+	dot -Tpng -o$@ $<
+
+%.pdf: %.tex
+	pdflatex $<
+	pdflatex $<
+
+clean:
+	rm -f $(pdfs) $(pngs) *.aux *.log *.out
