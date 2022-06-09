@@ -3,7 +3,7 @@ pngs = dcp.png
 
 .PHONY: all clean
 
-all: $(pngs) $(pdfs)
+all: $(pngs) $(pdfs) README.md
 
 %.png: %.dot
 	dot -Tpng -o$@ $<
@@ -12,5 +12,16 @@ all: $(pngs) $(pdfs)
 	pdflatex $<
 	pdflatex $<
 
+README.md: wiki.tex
+	echo \# What Records Should VA Keep About Phenotypes\? > $@
+	echo >> $@
+	echo Andrew Zimolzak, MD, MMSc >> $@
+	echo >> $@
+	echo March 27, 2017 >> $@
+	echo >> $@
+	pandoc -o temp.md $<
+	cat temp.md >> $@
+	rm -f temp.md
+
 clean:
-	rm -f $(pdfs) $(pngs) *.aux *.log *.out
+	rm -f $(pdfs) $(pngs) *.aux *.log *.out README.md
